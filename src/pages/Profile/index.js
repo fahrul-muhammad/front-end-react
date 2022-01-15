@@ -3,40 +3,66 @@ import Navbar from "../../components/navLogin";
 import Footer from "../../components/footerTemp";
 import axios from "axios";
 
+// redux
+import { connect } from "react-redux";
+
 import React, { Component } from "react";
 
-export default class index extends Component {
-  constructor() {
-    super();
-    this.state = {};
+class index extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: {},
+      update: {
+        email: "",
+        address: "",
+        phone_number: "",
+        name: "",
+        DoB: "",
+      },
+    };
   }
+
+  formChange = (e) => {
+    const data = { ...this.state.update };
+    data[e.target.name] = e.target.value;
+    this.setState(data);
+  };
 
   componentDidMount() {
-    this.userData();
-    console.log(this.state);
+    this.setState({ users: this.props.users });
+    console.log(this.props.token);
   }
 
-  userData = () => {
-    const URL = "http://localhost:8000/users/1";
-    axios
-      .get(URL)
-      .then((response) => {
-        const { result } = response.data;
-        this.setState(result[0]);
-        console.log(this.state);
+  onClickSave = (e) => {
+    const URL = process.env.REACT_APP_HOST + "/users";
+
+    const token = this.props.token;
+    console.log(this.state.data);
+    axios({
+      url: URL,
+      method: "PATCH",
+      data: this.state.update,
+      headers: { token },
+    })
+      .then((res) => {
+        console.log(res);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
       });
+    // const body = {
+    //   email: e.target.email.value,
+    //   address: e.target.address.value,
+    //   phone_number: e.target.phone_number.value,
+    //   name: e.target.name.value,
+    //   DoB: e.target.DoB.valule,
+    // };
   };
 
-  updateData = () => {
-    const URL = "http://localhost:8000/users";
-    axios({
-      method: "PATCH",
-      url: URL,
-    });
-  };
+  // changeData = (e) => {
+  //   this.onClickSave(e);
+  // };
 
   render() {
     return (
@@ -46,13 +72,13 @@ export default class index extends Component {
           <h3>Profile</h3>
           <div class="card">
             <div class="profile-pic">
-              <img src={"http://localhost:8000" + this.state.profilepic} alt="profilepic" />
+              <img src={process.env.REACT_APP_HOST + this.state.users.profilepic} alt="profilepic" />
               <div class="edit" />
             </div>
-            <h1>{this.state.name}</h1>
+            <h1>{this.state.users.name}</h1>
             <div class="detail">
-              <h4>{this.state.email}</h4>
-              <h4>{this.state.phone_number}</h4>
+              <h4>{this.state.users.email}</h4>
+              <h4>{this.state.users.phone_number}</h4>
               <h4>Has been active since 2013</h4>
             </div>
           </div>
@@ -77,19 +103,19 @@ export default class index extends Component {
             <label for="exampleFormControlInput1" class="form-label">
               Email Adress:
             </label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+            <input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder={this.props.users.email} onChange={this.onClickSave} />
           </div>
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">
               Adress:
             </label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Jl. Garuda" />
+            <input type="email" class="form-control" name="address" id="exampleFormControlInput1" placeholder={this.props.users.address} onChange={this.onClickSave} />
           </div>
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">
               Mobile Number:
             </label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="(+62)11122233344" />
+            <input type="email" class="form-control" name="phone_number" id="exampleFormControlInput1" onChange={this.onClickSave} placeholder={this.props.users.phone_number} />
           </div>
           <div class="row">
             <h2>Identity</h2>
@@ -97,18 +123,19 @@ export default class index extends Component {
               <label for="exampleFormControlInput1" class="form-label">
                 Display name:
               </label>
-              <input type="text" class="form-control" placeholder="Example Display name" aria-label="Display name" />
+              <input type="text" class="form-control" name="name" placeholder={this.props.users.name} onChange={this.onClickSave} aria-label="Display name" />
             </div>
             <div class="col">
               <label for="exampleFormControlInput1" class="form-label">
                 DD/MM/YYYY:
               </label>
-              <input type="date" class="form-control" placeholder="23/06/2003" aria-label="DD/MM/YYYY" />
+              <input type="date" class="form-control" name="DoB" placeholder={this.props.users.DoB} onChange={this.onClickSave} aria-label="DD/MM/YYYY" />
             </div>
           </div>
+
           <div class="wraping">
             <div class="row justify-content-between">
-              <button type="button" class="btn btn-warning change">
+              <button type="button" class="btn btn-warning change" onClick={this.onClickSave}>
                 Save Change
               </button>
               <button type="button" class="btn btn-secondary edit-btn">
@@ -125,3 +152,12 @@ export default class index extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    users: state.auth.userData,
+    token: state.auth.token,
+  };
+};
+
+export default connect(mapStateToProps)(index);

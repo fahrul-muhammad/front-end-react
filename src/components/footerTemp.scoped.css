@@ -4,9 +4,15 @@
   box-sizing: border-box;
 }
 
+.main-container {
+  width: 100%;
+  background-color: rgba(249, 249, 251, 1);
+}
+
 .footer-container {
   padding-top: 2%;
-  width: 100%;
+  margin: auto;
+  width: 90%;
   min-height: 50vh;
   background-color: rgba(249, 249, 251, 1);
   display: grid;
@@ -85,9 +91,8 @@ hr {
 }
 
 .icon-wrapper {
-  position: absolute;
-  left: 43%;
   width: 20vw;
+  margin: auto;
 }
 
 .footer-icon i {

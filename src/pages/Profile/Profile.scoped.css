@@ -1,6 +1,7 @@
 .container-profile {
   display: grid;
-  width: 100%;
+  margin: auto;
+  width: 90%;
   height: 750px;
   position: relative;
 }
@@ -9,21 +10,21 @@
   font-family: "Nunito";
   font-size: 36px;
   font-weight: 700;
-  padding-left: 3%;
   padding-top: 5%;
 }
 
 .card {
-  position: absolute;
+  /*   position: absolute;
   top: 30%;
-  left: 37%;
+  left: 37%; */
+  margin: auto;
   width: 400px;
   height: 440px;
   border-color: white;
 }
 
 .profile-pic {
-  margin-left: 23%;
+  margin: auto;
   width: 215px;
   height: 215px;
   border-radius: 50%;
@@ -93,7 +94,7 @@
 .gender {
   width: 40%;
   position: absolute;
-  bottom: 5%;
+  bottom: 0%;
   left: 35%;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -111,10 +112,8 @@
 
 /* contact */
 .contact {
-  width: 93%;
-  margin-left: 3%;
-  margin-right: 5%;
-  margin-top: 5%;
+  width: 90%;
+  margin: 5% auto 0% auto;
   height: 930px;
 }
 

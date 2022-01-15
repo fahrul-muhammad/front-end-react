@@ -13,7 +13,7 @@ main {
 
 .jumbotron h2 {
   padding-top: 10vh;
-  padding-left: 3%;
+  padding-left: 5%;
   font-family: "Playfair Display";
   font-size: 4.166666666666667vw;
   font-weight: 700;
@@ -24,20 +24,21 @@ main {
   font-family: "Nunito";
   color: white;
   padding-top: 5vh;
-  padding-left: 3%;
+  padding-left: 5%;
   font-size: 1.4322916666666667vw;
   font-weight: 600;
 }
 
 .jumbotron hr {
   border-top: 3px solid white;
-  margin-left: 3.5%;
+  margin-left: 5.5%;
   width: 3vw;
   margin-bottom: 2%;
 }
 
 .jumbotron-button {
   max-width: 40vw;
+  margin-left: 5%;
   height: 46.8%;
   display: grid;
   grid-template-columns: 1fr 1fr;

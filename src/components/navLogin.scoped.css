@@ -3,21 +3,23 @@
 }
 
 .navbar {
-  background-color: white !important;
+  background-color: rgb(255, 255, 255) !important;
   height: 10vh;
   position: relative;
+  width: 90%;
+  margin: 0.5% auto 0% auto;
 }
 
 .brand-logo {
   position: absolute;
-  left: 3%;
+  left: 0%;
 }
 
 .profile-img {
   border-radius: 50%;
   height: 100%;
   position: absolute;
-  right: 3%;
+  right: 0%;
   top: 10%;
 }
 
@@ -82,7 +84,7 @@
   width: 3%;
   height: 5vh;
   position: absolute;
-  right: 9%;
+  right: 6.5%;
   top: 20%;
 }
 

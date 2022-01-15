@@ -25,12 +25,13 @@ class index extends Component {
 
   getUsers = (token) => {
     axios({
-      url: "http://localhost:8000/users/profile",
+      url: process.env.REACT_APP_HOST + "/users/profile",
       method: "GET",
       headers: { token },
     })
       .then((res) => {
         const { result } = res.data.result;
+        console.log(result);
         this.props.setUsers(result[0]);
         this.props.history.push("/");
       })
@@ -41,7 +42,7 @@ class index extends Component {
 
   onSubmitHandler = () => {
     axios({
-      url: "http://localhost:8000/auth",
+      url: process.env.REACT_APP_HOST + "/auth",
       method: "POST",
       data: this.state,
     })
@@ -51,7 +52,12 @@ class index extends Component {
         this.getUsers(token);
       })
       .catch((err) => {
-        console.log(err);
+        console.log("Gagal");
+        let x = document.getElementById("snackbar");
+        x.className = "show";
+        setTimeout(function() {
+          x.className = x.className.replace("show", "");
+        }, 3000);
       });
   };
 
@@ -67,9 +73,10 @@ class index extends Component {
   //   }, 3000);
   // }
 
-  // componentDidUpdate(prevProps) {
-  //   console.log(this.props.auth.isFulfilled, prevProps.auth.isFulfilled);
-  // }
+  componentDidUpdate(prevProps) {
+    console.log(process.env.REACT_APP_HOST);
+    // console.log(this.props.auth.isFulfilled, prevProps.auth.isFulfilled);
+  }
 
   render() {
     return (
@@ -102,7 +109,7 @@ class index extends Component {
                     <img src={googleIcon} alt="google icon" /> Login With Google
                   </button>
                 </a>
-                <a href="/sign-up.html">
+                <a href="/signup">
                   <button type="button" className="btn btn-dark text-warning col-sm-12 fw-bold signup">
                     Sign Up
                   </button>

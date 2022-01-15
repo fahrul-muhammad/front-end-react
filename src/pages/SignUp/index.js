@@ -95,12 +95,12 @@ export default class index extends Component {
                     <hr class="second" />
                     <h3>to try another way</h3>
                   </div>
-                  <a href="/index.html">
+                  <a href="/#">
                     <button type="button" class="btn btn-light col-sm-12 fw-bold">
                       <img src={googleLogo} alt="google logo" /> Login With Google
                     </button>
                   </a>
-                  <a href="/login.html" class="login-link">
+                  <a href="/login" class="login-link">
                     <button type="button" class="btn btn-dark text-warning col-sm-12 fw-bold login">
                       Login
                     </button>

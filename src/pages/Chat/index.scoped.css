@@ -1,10 +1,11 @@
 .wrapper {
-  margin-top: 2%;
+  margin: auto;
+  position: relative;
 }
 
 .search-container {
   margin: auto;
-  width: 94vw;
+  width: 90%;
   height: 10vh;
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -75,7 +76,6 @@
   position: absolute;
   top: 8%;
   height: 73%;
-  width: 100%;
   background-color: rgba(218, 218, 218, 0.27);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }

@@ -15,11 +15,11 @@ class navLogin extends Component {
     };
   }
 
-  formChange = (e) => {
-    const data = { ...this.state };
-    data[e.target.name] = e.target.value;
-    this.setState(data);
-  };
+  // formChange = (e) => {
+  //   const data = { ...this.state };
+  //   data[e.target.name] = e.target.value;
+  //   this.setState(data);
+  // };
 
   componentDidMount() {
     this.setState({ users: this.props.users });
@@ -31,6 +31,7 @@ class navLogin extends Component {
   };
 
   render() {
+    console.log(this.state);
     return (
       <nav className="navbar navbar-expand-sm navbar-light bg-light log-nav">
         <div className="container-fluid me-2">
@@ -72,7 +73,7 @@ class navLogin extends Component {
           <div className="profile-img">
             <div class="btn-group dropstart ">
               {/* <img src={"http://localhost:8000" + this.state.profilepic} alt="" /> */}
-              <img src={"http://localhost:8000/" + this.state.users.profilepic} alt="" />
+              <img src={process.env.REACT_APP_HOST + this.state.users.profilepic} alt="" />
               <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" />
               <ul class="dropdown-menu ">
                 <li>

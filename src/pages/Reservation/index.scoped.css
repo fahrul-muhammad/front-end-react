@@ -1,7 +1,7 @@
 .back-button {
   margin-top: 3%;
-  margin-left: 3.5%;
-  width: 93%;
+  margin-left: 5%;
+  width: 90%;
   height: 10vh;
   display: inline-flex;
   margin-bottom: 3%;
@@ -21,7 +21,7 @@
 }
 
 .main-container {
-  width: 93%;
+  width: 90%;
   height: 90vh;
   margin: auto;
   display: grid;
@@ -43,6 +43,7 @@
 
 .right {
   grid-area: right;
+  padding-left: 3%;
 }
 
 .right h2 {
@@ -122,9 +123,9 @@
 }
 
 .reservation-button {
-  width: 93%;
+  width: 90%;
   height: 11.93029490616622vh;
-  margin-left: 3.5%;
+  margin-left: 5%;
   margin-top: 5%;
   margin-bottom: 5%;
 }

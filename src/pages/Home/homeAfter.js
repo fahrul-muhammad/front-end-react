@@ -33,7 +33,7 @@ class homeAfter extends Component {
           </h2>
           <h4>Vehicle Finder</h4>
           <hr />
-          <div className="jumbotron-button ms-5">
+          <div className="jumbotron-button">
             <div className="input-area">
               <input type="category" class="form-control home-input" id="exampleFormControlInput1" placeholder="Type the vehicle (ex. motorbike)" />
             </div>

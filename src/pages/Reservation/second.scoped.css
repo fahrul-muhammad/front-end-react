@@ -1,7 +1,7 @@
 .back-button {
   width: 25%;
   margin-top: 3%;
-  background-color: bisque;
+  margin-bottom: 3%;
 }
 
 a {
@@ -24,7 +24,6 @@ a {
   height: 70vh;
   width: 90%;
   margin: auto;
-  background-color: cadetblue;
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   grid-template-rows: 70vh;
@@ -34,7 +33,6 @@ a {
 
 .left-container {
   grid-area: left;
-  background-color: rgb(255, 187, 0);
 }
 
 .left-container img {
@@ -47,7 +45,6 @@ a {
 
 .right-container {
   grid-area: right;
-  background-color: chocolate;
   position: relative;
 }
 
@@ -86,8 +83,8 @@ a {
   margin-top: 1.5%;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 5%;
   height: 12.93029490616622vh;
-  background-color: rgb(6, 40, 104);
 }
 
 .reservation-container p {

@@ -1,15 +1,13 @@
 .testimoni {
-  margin-top: 5%;
-  width: 100%;
+  margin: 5% auto 0%;
+  width: 90%;
   height: 100.53619302949062vh;
-  background-color: white;
   position: relative;
 }
 
 .testimoni h3 {
   font-family: "Playfair Display";
   font-size: 2.34375vw;
-  padding-left: 5%;
   padding-top: 2%;
   color: black;
   font-weight: 700;
@@ -21,7 +19,6 @@
 
 .star {
   color: rgba(255, 187, 12, 1);
-  padding-left: 5%;
   padding-top: 10%;
 }
 
@@ -35,12 +32,10 @@
   width: 27%;
   font-family: "Mulish";
   font-size: 1.5625vw;
-  padding-left: 5%;
 }
 
 .testimoni h2 {
   padding-top: 2%;
-  padding-left: 5%;
   width: 27%;
   font-size: 1.4322916666666667vw;
   color: rgba(0, 0, 0, 1);
@@ -48,7 +43,6 @@
 }
 
 .testimoni h4 {
-  padding-left: 5%;
   font-size: 1.171875vw;
   font-family: "Nunito";
   color: rgba(57, 57, 57, 0.85);
