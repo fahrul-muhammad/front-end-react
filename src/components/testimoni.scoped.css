@@ -1,0 +1,97 @@
+.testimoni {
+  margin-top: 5%;
+  width: 100%;
+  height: 100.53619302949062vh;
+  background-color: white;
+  position: relative;
+}
+
+.testimoni h3 {
+  font-family: "Playfair Display";
+  font-size: 2.34375vw;
+  padding-left: 5%;
+  padding-top: 2%;
+  color: black;
+  font-weight: 700;
+}
+
+.testimoni figcaption {
+  margin-bottom: 1%;
+}
+
+.star {
+  color: rgba(255, 187, 12, 1);
+  padding-left: 5%;
+  padding-top: 10%;
+}
+
+.star i {
+  padding-right: 1%;
+}
+
+.testimoni h6 {
+  color: rgba(57, 57, 57, 1);
+  padding-top: 2%;
+  width: 27%;
+  font-family: "Mulish";
+  font-size: 1.5625vw;
+  padding-left: 5%;
+}
+
+.testimoni h2 {
+  padding-top: 2%;
+  padding-left: 5%;
+  width: 27%;
+  font-size: 1.4322916666666667vw;
+  color: rgba(0, 0, 0, 1);
+  font-family: "Nunito";
+}
+
+.testimoni h4 {
+  padding-left: 5%;
+  font-size: 1.171875vw;
+  font-family: "Nunito";
+  color: rgba(57, 57, 57, 0.85);
+}
+
+.testimoni-img {
+  width: 26.041666666666668vw;
+  height: 67.02412868632707vh;
+  background-color: white;
+  border-radius: 10px;
+  background-image: url(../img/custumor-min.png);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  position: absolute;
+  right: 10%;
+  top: 2%;
+  z-index: 1;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.testimoni-img figcaption {
+  background-color: white;
+  height: 12%;
+  width: 30%;
+  position: absolute;
+  z-index: 1;
+  border-radius: 8px;
+  padding-top: 5%;
+  bottom: -5px;
+  right: -1px;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.circle-1 {
+  position: absolute;
+  width: 50px;
+  left: 80%;
+  bottom: -118%;
+}
+
+.figure-caption i {
+  font-size: 2vw;
+  padding-left: 10%;
+}

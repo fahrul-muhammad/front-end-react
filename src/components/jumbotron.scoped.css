@@ -1,0 +1,144 @@
+/* button di jumbotron style="width: 200px; height: 52px */
+
+.jumbotron-home {
+  margin-top: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  background: url(../img/home-hero-img-min.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 49.934895833333336vw;
+  position: relative;
+  color: white;
+}
+
+.jumbotron-home h1 {
+  padding-top: 5%;
+  padding-left: 5%;
+  padding-right: 70%;
+  font-size: 64px;
+  font-family: "Playfair Display";
+}
+
+.jumbotron-home h5 {
+  font-family: "Nunito", sans-serif;
+  padding-top: 5%;
+  padding-left: 5%;
+}
+
+.jumbotron-home h6 {
+  padding-left: 5%;
+}
+
+.dropdown-home {
+  position: relative;
+  width: 39.0625vw;
+  height: 28vh;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  display: grid;
+  grid-gap: 1%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "location type"
+    "payment date"
+    "button none";
+}
+
+.jumbotron-home select {
+  width: 14.322916666666666vw;
+  height: 6.970509383378016vh;
+  font-family: "Nunito";
+  font-weight: 600;
+  font-size: 1.171875vw;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+}
+
+.location {
+  grid-area: location;
+}
+
+.type-vehicle {
+  grid-area: type;
+}
+
+.payment {
+  grid-area: payment;
+}
+
+.date-picker {
+  grid-area: date;
+  width: 14.322916666666666vw;
+  height: 6.970509383378016vh;
+  font-family: "Nunito";
+  font-weight: 600;
+  font-size: 1.171875vw;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+  border: none;
+}
+
+.fa-calendar {
+  font-family: "Nunito";
+  font-weight: 600;
+  font-size: 1.171875vw;
+}
+
+input[type="date"] {
+  display: block;
+  position: relative;
+  padding: 1rem 3.5rem 1rem 0.75rem;
+  border: none;
+  background: rgba(255, 255, 255, 0.5) url("../img/calendar-icon.png") right 1rem center no-repeat;
+  cursor: pointer;
+  background-size: 3vh;
+}
+input[type="date"]:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 0.25rem rgba(0, 120, 250, 0.1);
+}
+
+::-webkit-datetime-edit-text {
+  opacity: 0;
+}
+::-webkit-clear-button,
+::-webkit-inner-spin-button {
+  display: none;
+}
+::-webkit-calendar-picker-indicator {
+  position: absolute;
+  width: 2.5rem;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  opacity: 0;
+  cursor: pointer;
+
+  color: rgb(0, 0, 0);
+  background: rgb(0, 0, 0);
+}
+
+input[type="date"]:hover::-webkit-calendar-picker-indicator {
+  opacity: 0.05;
+}
+input[type="date"]:hover::-webkit-calendar-picker-indicator:hover {
+  opacity: 0.15;
+}
+
+.explore {
+  grid-area: button;
+  position: absolute;
+  bottom: 0%;
+  background-color: rgba(255, 205, 97, 1) !important;
+  width: 11.71875vw;
+  height: 6.970509383378016vh;
+  border-radius: 8px;
+  font-family: "Nunito";
+  font-weight: 600;
+}

@@ -1,0 +1,254 @@
+.back-button {
+  width: 25%;
+  margin-top: 3%;
+}
+
+a {
+  display: inline-flex;
+  text-decoration: none;
+  color: black;
+  margin-left: 3.4%;
+}
+
+.back-button i {
+  font-size: 2.9947916666666665vw;
+}
+.back-button h3 {
+  padding-top: 7%;
+  padding-left: 20%;
+  font-family: "Nunito";
+}
+
+.main-container {
+  width: 93%;
+  height: 87vh;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 4%;
+  grid-template-areas: "left right";
+}
+
+.button-container {
+  width: 93%;
+  margin: auto;
+  height: 10.7vh;
+  margin-bottom: 3%;
+}
+
+.left-container {
+  grid-area: left;
+}
+
+.right-container {
+  grid-area: right;
+}
+
+.img-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-gap: 3%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr 1fr;
+  grid-template-areas:
+    "first-img first-img"
+    "left-img right-img";
+}
+
+.first {
+  grid-area: first-img;
+  background-color: #f5f5f6;
+  border-radius: 10px;
+}
+
+.left-img {
+  grid-area: left-img;
+  background-color: #f5f5f6;
+  border-radius: 10px;
+}
+
+.right-img {
+  grid-area: right-img;
+  background-color: #f5f5f6;
+  border-radius: 10px;
+}
+
+.right-container input {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid black;
+  border-radius: 0%;
+  height: 7vh;
+  margin-bottom: 3%;
+}
+
+.right-container input::placeholder {
+  color: #80918e;
+  font-family: "Nunito";
+}
+
+.input-price input {
+  height: 11.126005361930295vh;
+  background: #f5f5f6;
+  border-radius: 10px;
+  border-bottom: none;
+}
+
+.input-price p {
+  font-family: "Playfair Display";
+  font-size: 1.5625vw;
+  font-weight: 700;
+}
+
+.status p {
+  font-family: "Playfair Display";
+  font-size: 1.5625vw;
+  font-weight: 700;
+}
+
+.status select {
+  height: 11.126005361930295vh;
+  background: #f5f5f6;
+  border: none;
+  border-radius: 10px;
+  margin-top: 4%;
+}
+
+.status option {
+  font-family: "Nunito";
+}
+
+.status option:nth-child(2) {
+  color: #087e0d;
+  font-family: "Nunito";
+  font-size: 1.171875vw;
+  font-weight: 400;
+}
+
+.status option:nth-child(3) {
+  color: #9b0a0a;
+  font-family: "Nunito";
+  font-size: 1.171875vw;
+  font-weight: 400;
+}
+
+/* .status select option[value="1"] {
+  color: #087e0d;
+  font-family: "Nunito";
+  font-size: 1.171875vw;
+  font-weight: 400;
+} */
+
+.stock {
+  width: 100%;
+  height: 17.4vh;
+  display: inline-flex;
+  position: relative;
+}
+
+.stock p {
+  padding-top: 6%;
+  font-family: "Playfair Display";
+  font-size: 1.5625vw;
+  font-weight: 700;
+}
+
+.counter {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  display: inline-flex;
+}
+
+.counter p {
+  padding-top: 13%;
+  padding-left: 34%;
+  font-size: 1.5625vw;
+  font-family: "Nunito";
+  font-weight: 900;
+}
+
+.counter button {
+  height: 6.702412868632708vh;
+  width: 3.2552083333333335vw;
+  margin-top: 11%;
+  font-weight: 900;
+  font-size: 1.5vw;
+  border-radius: 10px;
+}
+
+.btn-light {
+  background-color: rgba(203, 203, 212, 0.2);
+}
+
+.stock .btn-warning {
+  position: absolute;
+  right: 0%;
+  background-color: #ffcd61;
+}
+
+.button-container {
+  margin-top: 1%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas: "btn-left btn-right";
+  grid-gap: 5%;
+}
+
+.button-container button,
+.button-container select {
+  border-radius: 10px;
+}
+
+.left-button {
+  grid-area: btn-left;
+  position: relative;
+}
+
+.left-button .dropdown-sort {
+  width: 100%;
+  height: 100% !important;
+}
+
+.left-button i {
+  position: absolute;
+  right: 5%;
+  top: 30%;
+  color: #ffcd61;
+  font-size: 20px;
+}
+
+.left-button .dropdown-sort select {
+  width: 100%;
+  height: 100%;
+  background: #393939;
+  color: #ffcd61;
+  border: none;
+  text-align: center;
+  font-size: 1.3020833333333333vw;
+  font-family: "Nunito";
+  font-weight: 600;
+}
+
+.left-button option {
+  background-color: white;
+  color: #393939;
+  border-radius: 10px;
+}
+
+.right-button {
+  grid-area: btn-right;
+}
+
+.right-button button {
+  width: 100%;
+  height: 100%;
+  color: #393939;
+  background-color: #ffcd61;
+  font-size: 1.3020833333333333vw;
+  font-family: "Nunito";
+  font-weight: 600;
+}

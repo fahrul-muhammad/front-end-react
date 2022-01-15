@@ -1,0 +1,112 @@
+main {
+  overflow-x: hidden;
+}
+
+.jumbotron {
+  background-image: url(/src/img/home-after-login-min.jpg) /*  linear-gradient(rgba(0, 0, 0, 0.3)) */;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position-y: 100%;
+  max-width: 100vw;
+  height: 105.27882037533512vh;
+}
+
+.jumbotron h2 {
+  padding-top: 10vh;
+  padding-left: 3%;
+  font-family: "Playfair Display";
+  font-size: 4.166666666666667vw;
+  font-weight: 700;
+  color: rgba(32, 35, 54, 1);
+}
+
+.jumbotron h4 {
+  font-family: "Nunito";
+  color: white;
+  padding-top: 5vh;
+  padding-left: 3%;
+  font-size: 1.4322916666666667vw;
+  font-weight: 600;
+}
+
+.jumbotron hr {
+  border-top: 3px solid white;
+  margin-left: 3.5%;
+  width: 3vw;
+  margin-bottom: 2%;
+}
+
+.jumbotron-button {
+  max-width: 40vw;
+  height: 46.8%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 20% 20% 20%;
+  grid-gap: 2%;
+  grid-template-areas:
+    "first first"
+    "location date"
+    "button none";
+}
+
+.input-area {
+  grid-area: first;
+}
+
+.home-input {
+  width: 100%;
+  height: 85%;
+  border: none;
+  font-size: 1.171875vw;
+  font-weight: 700;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.location-area {
+  grid-area: location;
+}
+
+.location-area button {
+  width: 100%;
+  border-radius: 6px;
+  border: none;
+  font-size: 1.171875vw;
+  margin-top: 4%;
+  font-weight: 700;
+  color: rgba(74, 76, 83, 1);
+  height: 7.372654155495979vh !important;
+  background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.date-area {
+  grid-area: date;
+}
+
+.date-area button {
+  width: 100%;
+  color: rgba(74, 76, 83, 1);
+  border-radius: 6px;
+  border: none;
+  font-size: 1.171875vw;
+  margin-top: 4%;
+  font-weight: 700;
+  height: 7.372654155495979vh !important;
+  background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.button-area {
+  grid-area: button;
+}
+
+.button-area button {
+  width: 90%;
+  height: 100%;
+  margin-top: 4%;
+  border-radius: 6px;
+  color: rgba(74, 76, 83, 1);
+  font-size: 1.171875vw;
+  font-family: "Nunito";
+  font-weight: 900;
+  background-color: rgba(255, 205, 97, 1) !important;
+}

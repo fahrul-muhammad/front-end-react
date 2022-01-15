@@ -1,0 +1,177 @@
+.log-nav {
+  position: relative;
+}
+
+.navbar {
+  background-color: white !important;
+  height: 10vh;
+  position: relative;
+}
+
+.brand-logo {
+  position: absolute;
+  left: 3%;
+}
+
+.profile-img {
+  border-radius: 50%;
+  height: 100%;
+  position: absolute;
+  right: 3%;
+  top: 10%;
+}
+
+.btn-group {
+  width: 3.2552083333333335vw;
+  height: 6.702412868632708vh;
+}
+
+.dropdown-toggle {
+  color: rgba(255, 255, 255, 0);
+  z-index: 0 !important;
+  background-color: rgba(255, 255, 255, 0);
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 130% !important;
+  right: -90% !important;
+  text-align: center;
+}
+
+.btn-group img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* .btn-group img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+} */
+
+/* .nav-img {
+  background-color: rgb(138, 0, 138) !important;
+  width: 3.2552083333333335vw;
+  height: 6.702412868632708vh;
+  border-radius: 50%;
+  background-image: url(/src/img/profilepic-min.png) !important;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  right: 3%;
+  top: 10%;
+  z-index: 9999 !important;
+} */
+
+.nav-email {
+  background-image: url(/src/img/email-min.png);
+  background-size: cover;
+  background-position: center;
+  width: 3%;
+  height: 5vh;
+  position: absolute;
+  right: 9%;
+  top: 20%;
+}
+
+a {
+  color: black;
+}
+
+.unread-msg {
+  min-width: 2vw;
+  min-height: 4vh;
+  border-radius: 50%;
+  position: absolute;
+  left: -25%;
+  top: -25%;
+  text-align: center;
+  background-color: rgba(255, 205, 97, 1);
+}
+
+.navbar-nav li:hover {
+  color: rgba(32, 35, 54, 1);
+}
+
+.nav-list {
+  position: absolute;
+  right: 15%;
+}
+
+@media screen and (max-width: 1200px) and (min-width: 992px) {
+  .nav-img {
+    width: 4.5%;
+  }
+
+  .unread-msg {
+    width: 70%;
+    height: 70%;
+  }
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px) {
+  .nav-img {
+    width: 5.3%;
+  }
+
+  .nav-email {
+    width: 4%;
+    right: 10%;
+  }
+
+  .unread-msg {
+    width: 70%;
+    height: 70%;
+  }
+}
+@media screen and (max-width: 767px) and (min-width: 576px) {
+  .nav-img {
+    width: 6.3%;
+  }
+
+  .nav-list {
+    right: 30%;
+  }
+
+  .nav-email {
+    width: 5%;
+    right: 13%;
+  }
+
+  .unread-msg {
+    width: 70%;
+    height: 70%;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .navbar-toggler {
+    position: absolute;
+    right: 3%;
+  }
+
+  .nav-img {
+    display: none;
+  }
+
+  .nav-email {
+    display: none;
+  }
+
+  .unread-msg {
+    width: 70%;
+    height: 70%;
+  }
+}

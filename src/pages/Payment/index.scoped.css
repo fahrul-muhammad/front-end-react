@@ -1,0 +1,310 @@
+.back-button {
+  margin-top: 3%;
+  margin-left: 3.5%;
+  width: 93%;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 3%;
+}
+
+.back-button a {
+  color: black;
+}
+
+.back-button i {
+  font-size: 2.9296875vw;
+}
+
+.back-button h3 {
+  padding-top: 1.2%;
+  padding-left: 5%;
+  font-size: 2.3vw;
+}
+
+.jumbotron {
+  width: 100%;
+  height: 58.579088471849865vh;
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/src/img/sepeda-keren-min.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+  padding-left: 3%;
+  margin-bottom: 3%;
+}
+
+.jumbotron img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.jumbo-tittle {
+  margin-bottom: 5%;
+}
+
+.jumbo-tittle p {
+  color: white;
+  font-family: "Playfair Display";
+  font-size: 3.125vw;
+}
+
+.button-container {
+  width: max-content;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.btn-light {
+  width: 39.2578125vw;
+  color: black;
+  font-family: "Nunito";
+  font-size: 24px;
+  font-weight: 900;
+  height: 11.93029490616622vh;
+}
+
+.payment {
+  width: 94%;
+  height: 20vh;
+  margin-left: 3%;
+  margin-bottom: 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "left right";
+  grid-gap: 10%;
+}
+
+.left {
+  grid-area: left;
+}
+
+.right {
+  grid-area: right;
+}
+
+.code {
+  margin-top: 3%;
+  width: 100%;
+  height: 50%;
+  border: 2px solid rgba(128, 145, 142, 1);
+  border-radius: 10px;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.left h2,
+.right h2 {
+  font-family: "Nunito";
+  font-weight: 300;
+}
+
+.btn-secondary {
+  background-color: rgba(57, 57, 57, 1);
+  color: rgba(255, 205, 97, 1);
+}
+
+.code p {
+  padding-top: 2%;
+  padding-left: 5%;
+  font-family: "Playfair Display";
+  font-size: 1.5625vw;
+}
+
+.code button {
+  position: absolute;
+  right: 5%;
+  top: 19%;
+  height: 5.630026809651475vh;
+  width: 8.072916666666666vw;
+}
+
+.detail-order {
+  margin-left: 3%;
+  width: 94%;
+  height: 60vh;
+  display: grid;
+  position: relative;
+  grid-template-columns: 29.427083333333332vw auto;
+  grid-template-rows: 1fr 1fr 2fr;
+  grid-gap: 3%;
+  grid-template-areas:
+    "tittle tittle"
+    "left right"
+    "s-left s-right";
+}
+
+.detail-order p {
+  grid-area: tittle;
+  text-align: center;
+  font-family: "Playfair Display";
+  font-size: 2.34375vw;
+  font-weight: 900;
+}
+
+.f-left {
+  grid-area: left;
+  background-color: white;
+  border: 2px solid rgba(128, 145, 142, 1);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.f-left p {
+  padding-top: 7%;
+  font-family: "Nunito";
+  font-size: 1.5625vw;
+  font-weight: 700;
+}
+
+.f-right {
+  grid-area: right;
+  background-color: white;
+  border: 2px solid rgba(128, 145, 142, 1);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.f-right p {
+  padding-top: 3.5%;
+  font-family: "Nunito";
+  font-size: 1.5625vw;
+  font-weight: 700;
+}
+
+.s-left {
+  grid-area: s-left;
+  border: 2px solid rgba(128, 145, 142, 1);
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.s-left p {
+  padding-top: 9%;
+  padding-left: 7.5%;
+  text-align: start;
+  font-family: "Nunito";
+  font-size: 1.5625vw;
+  font-weight: 700;
+}
+
+.s-left li {
+  list-style: none;
+  font-family: "Nunito";
+  font-size: 1.5625vw;
+  font-weight: 300;
+}
+
+.s-right {
+  grid-area: s-right;
+  border: 2px solid rgba(128, 145, 142, 1);
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.s-right p {
+  padding-top: 4%;
+  padding-left: 29.5%;
+  text-align: start;
+  font-family: "Nunito";
+  font-size: 1.5625vw;
+  font-weight: 700;
+}
+
+.s-right li {
+  padding-left: 27%;
+  list-style: none;
+  font-family: "Nunito";
+  font-size: 1.5625vw;
+  font-weight: 300;
+}
+
+.payment-method {
+  width: 93.5%;
+  height: 50vh;
+  margin-left: 3%;
+  margin-top: 3%;
+  margin-bottom: 5%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:
+    "first"
+    "second"
+    "third";
+}
+
+.payment-method p {
+  grid-area: first;
+  text-align: center;
+  font-family: "Playfair Display";
+  font-size: 2.34375vw;
+  font-weight: 900;
+}
+
+.second {
+  grid-area: second;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "btn-left btn-right";
+  grid-gap: 3%;
+  position: relative;
+  margin-bottom: 2%;
+  color: rgba(57, 57, 57, 1);
+}
+
+.btn-left {
+  grid-area: btn-left;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+}
+
+.btn-right {
+  grid-area: btn-right;
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  left: 0%;
+}
+
+.cash {
+  width: 100%;
+  height: 100%;
+  font-size: 1.5625vw;
+  font-family: "Nunito";
+  font-weight: 300;
+  border: 1px solid #80918e;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.transfer {
+  width: 100%;
+  height: 100%;
+  font-size: 1.5625vw;
+  font-family: "Nunito";
+  font-weight: 300;
+  background: rgba(255, 205, 97, 1);
+  border-radius: 10px;
+}
+
+.third {
+  grid-area: third;
+}
+
+.finish {
+  margin-top: 1%;
+  margin-left: 5%;
+  width: 90%;
+  height: 80%;
+  color: rgba(255, 205, 97, 1);
+  font-size: 1.5625vw;
+  font-family: "Nunito";
+  font-weight: 300;
+  border-radius: 10px;
+}

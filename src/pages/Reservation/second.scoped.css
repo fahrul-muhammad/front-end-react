@@ -1,0 +1,114 @@
+.back-button {
+  width: 25%;
+  margin-top: 3%;
+  background-color: bisque;
+}
+
+a {
+  display: inline-flex;
+  text-decoration: none;
+  color: black;
+  margin-left: 5%;
+}
+
+.back-button i {
+  font-size: 2.9947916666666665vw;
+}
+.back-button h3 {
+  padding-top: 7%;
+  padding-left: 20%;
+  font-family: "Nunito";
+}
+
+.main-container {
+  height: 70vh;
+  width: 90%;
+  margin: auto;
+  background-color: cadetblue;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  grid-template-rows: 70vh;
+  grid-gap: 4%;
+  grid-template-areas: "left right";
+}
+
+.left-container {
+  grid-area: left;
+  background-color: rgb(255, 187, 0);
+}
+
+.left-container img {
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.right-container {
+  grid-area: right;
+  background-color: chocolate;
+  position: relative;
+}
+
+.right-container h1 {
+  font-family: "Playfair Display";
+  font-size: 3.125vw;
+  font-weight: 900;
+}
+
+.right-container p {
+  font-family: "Playfair Display";
+  font-weight: 400;
+  font-size: 2.34375vw;
+}
+
+.quantity {
+  height: 14.343163538873995vh;
+  border-radius: 10px;
+  border: 1px solid #80918e;
+}
+
+.details {
+  width: 100%;
+  height: 28.9544235924933vh;
+  border-radius: 10px;
+  border: 1px solid #80918e;
+  position: absolute;
+  bottom: 0%;
+}
+
+.reservation-container {
+  width: 90%;
+  display: grid;
+  grid-template-areas: "reservation button";
+  grid-template-columns: 1.7fr 2fr;
+  margin-top: 1.5%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 12.93029490616622vh;
+  background-color: rgb(6, 40, 104);
+}
+
+.reservation-container p {
+  font-family: "Nunito";
+  font-weight: 700;
+  font-size: 2.34375vw;
+  padding-top: 4%;
+}
+
+.button-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "leftInput rightInput";
+  grid-gap: 3%;
+}
+
+.left-input {
+  grid-area: leftInput;
+  height: 66%;
+}
+
+.right-input {
+  grid-area: rightInput;
+}

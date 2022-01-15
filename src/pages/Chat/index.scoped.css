@@ -1,0 +1,90 @@
+.wrapper {
+  margin-top: 2%;
+}
+
+.search-container {
+  margin: auto;
+  width: 94vw;
+  height: 10vh;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "search dropdown";
+  grid-gap: 2vw;
+}
+
+.search-bar {
+  grid-area: search;
+}
+
+.height {
+  height: 100%;
+}
+
+.form {
+  position: relative;
+}
+
+.col-md-12 {
+  margin-top: 0%;
+  width: 100%;
+  height: 85%;
+}
+
+.form .fa-search {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #9ca3af;
+}
+
+.form span {
+  position: absolute;
+  right: 17px;
+  top: 13px;
+  padding: 2px;
+  border-left: 1px solid #d1d5db;
+}
+
+.left-pan {
+  padding-left: 7px;
+}
+
+.left-pan i {
+  padding-left: 10px;
+}
+
+.form-input {
+  border: none;
+  height: 55px;
+  text-indent: 33px;
+  background-color: rgba(218, 218, 218, 0.27);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.form-input:focus {
+  border: none;
+}
+
+.dropdown-sort {
+  grid-area: dropdown;
+  position: relative;
+}
+
+.dropdown-sort select {
+  border: none;
+  position: absolute;
+  top: 8%;
+  height: 73%;
+  width: 100%;
+  background-color: rgba(218, 218, 218, 0.27);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+select:focus {
+  border: none;
+}
+
+.dropdown-sort option {
+  text-align: center;
+  padding-bottom: 9%;
+}

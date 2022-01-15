@@ -1,0 +1,146 @@
+.back-button {
+  margin-top: 3%;
+  margin-left: 3.5%;
+  width: 93%;
+  height: 10vh;
+  display: inline-flex;
+  margin-bottom: 3%;
+}
+
+.back-button a {
+  color: black;
+}
+
+.back-button i {
+  font-size: 2.9296875vw;
+}
+
+.back-button h3 {
+  padding-top: 1.5%;
+  padding-left: 5%;
+}
+
+.main-container {
+  width: 93%;
+  height: 90vh;
+  margin: auto;
+  display: grid;
+  grid-column-gap: 2%;
+  grid-template-areas: "left right";
+  grid-template-columns: 1fr 1fr;
+}
+
+.left {
+  grid-area: left;
+}
+
+.left img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.right {
+  grid-area: right;
+}
+
+.right h2 {
+  font-family: "Playfair Display";
+  font-size: 3.125vw;
+  padding-bottom: 2%;
+}
+
+.right h4 {
+  font-family: "Playfair Display";
+  font-size: 3.125vw;
+  padding-bottom: 2%;
+}
+
+.right p {
+  color: rgba(155, 10, 10, 1);
+  font-size: 1.5625vw;
+  font-family: "Nunito";
+}
+
+.counter {
+  width: 100%;
+  margin-top: 8%;
+  height: 11vh;
+  display: inline-flex;
+  position: relative;
+}
+
+.minus {
+  position: absolute;
+  left: 20%;
+  background-color: #dfdede;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border: none;
+}
+
+.plus {
+  position: absolute;
+  right: 20%;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.counter button {
+  height: 10.723860589812332vh;
+  width: 5.143229166666667vw;
+  font-size: 1.8880208333333333vw;
+  font-weight: 900;
+}
+
+.counter h5 {
+  font-size: 3.125vw;
+  position: absolute;
+  left: 50%;
+  top: 15%;
+}
+
+.forms {
+  margin-top: 12%;
+  width: 100%;
+  height: 100%;
+}
+
+.forms p {
+  font-size: 24px;
+  font-family: "Nunito";
+  font-weight: 700;
+  color: rgba(57, 57, 57, 1);
+}
+
+.forms input {
+  height: 10.723860589812332vh;
+  background-color: #dfdede;
+  color: rgba(128, 145, 142, 1);
+  font-family: "Nunito";
+  margin-bottom: 3%;
+}
+
+.reservation-button {
+  width: 93%;
+  height: 11.93029490616622vh;
+  margin-left: 3.5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.reservation-button button {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 205, 97, 1);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.reservation-button p {
+  font-family: "Nunito";
+  font-weight: 900;
+  padding-top: 1%;
+  font-size: 24px;
+  color: rgba(57, 57, 57, 1);
+}

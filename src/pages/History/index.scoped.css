@@ -1,0 +1,302 @@
+h3 {
+  color: rgba(196, 196, 196, 1);
+  font-weight: 600;
+  font-family: "Nunito";
+  font-size: 1.5625vw;
+  padding-left: 3%;
+}
+
+.history-container {
+  width: 77%;
+  height: 100vh;
+  margin-left: 3%;
+}
+
+.search-container {
+  width: 77%;
+  margin-left: 3%;
+  position: relative;
+  height: 25vh;
+}
+
+.modal-container {
+  margin-left: 3%;
+}
+
+.btn-modal {
+  height: 11.93029490616622vh;
+  width: 77%;
+  background-color: rgba(255, 205, 97, 1);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  font-size: 1.5vw;
+}
+
+.modal-btn {
+  display: flex;
+  margin-top: 10%;
+  width: 100%;
+  position: relative;
+}
+
+.modal h1 {
+  text-align: center;
+  font-size: 2.34375vw;
+  font-weight: 700;
+  font-family: "Nunito";
+}
+
+.filter {
+  color: black;
+}
+
+.modal .btn-warning {
+  width: 45%;
+  background-color: rgba(255, 205, 97, 1);
+  color: rgba(57, 57, 57, 1);
+  font-size: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.modal .btn-secondary {
+  width: 45%;
+  position: absolute;
+  right: 0%;
+  background-color: rgba(57, 57, 57, 1);
+  color: rgba(255, 205, 97, 1);
+  font-size: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.card-container {
+  background-color: white;
+  border: 1px solid rgba(218, 218, 218, 1);
+  position: absolute;
+  top: 10%;
+  right: 3%;
+  width: 20%;
+  height: 125vh;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown {
+  position: absolute;
+  bottom: 10%;
+  left: 3%;
+}
+
+/* search bar */
+
+.form {
+  position: absolute;
+  top: 15%;
+  left: 3%;
+  width: 50%;
+  height: 10%;
+}
+
+/* .col-md-6 {
+  position: absolute;
+  left: 0%;
+} */
+
+.form .fa-search {
+  position: absolute;
+  top: 20px;
+  right: 0px;
+  color: rgba(57, 57, 57, 1);
+  font-size: 1.953125vw;
+}
+
+.form span {
+  position: absolute;
+  right: 17px;
+  top: 25px;
+  padding: 2px;
+  border-left: 1px solid #d1d5db;
+}
+
+.left-pan i {
+  padding-left: 10px;
+}
+
+.form-input {
+  height: 10vh;
+  width: 43.880208333333336vw;
+  text-indent: 33px;
+  position: relative;
+  border-radius: 10px;
+  background-color: rgba(218, 218, 218, 0.27);
+}
+
+.form-input:focus {
+  box-shadow: none;
+  border: none;
+}
+/* /search bar */
+
+.checkbox {
+  position: absolute;
+  left: 75%;
+  top: 14.5%;
+}
+
+.form-check-input {
+  display: flex;
+  flex-direction: column;
+  width: 1.953125vw;
+  height: 4.021447721179625vh;
+}
+
+.checkbox label {
+  font-size: 1.5625vw;
+}
+
+.checkbox input {
+  position: absolute;
+  left: 15px;
+}
+
+.card-container p {
+  padding-top: 14.5%;
+  font-size: 1.5625vw;
+  font-family: "Playfair Display";
+  font-weight: 900;
+  text-align: center;
+}
+
+.card {
+  margin-left: auto;
+  margin-right: auto;
+  width: 18.619791666666668vw;
+  height: 48.257372654155496vh;
+  position: relative;
+  margin-bottom: 10%;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card figcaption {
+  background-color: white;
+  position: absolute;
+  width: 8.203125vw;
+  height: 7.506702412868632vh;
+  bottom: 0%;
+  left: 0%;
+}
+
+.dropdown-toggle {
+  background-color: rgba(218, 218, 218, 0.27);
+  width: 10.221354166666666vw;
+  height: 7.05361930294906vh;
+  border: none;
+}
+
+.dropdown-menu {
+  text-align: center;
+  font-weight: bold;
+}
+
+.dropdown-item {
+  border-width: 10px;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.text-card {
+  width: 100%;
+  position: relative;
+  margin-bottom: 3%;
+}
+
+.text {
+  width: 70%;
+  margin-left: 3%;
+  height: 7vh;
+  border-bottom: 1px solid rgba(196, 196, 196, 1);
+  position: relative;
+}
+
+.text p {
+  padding-top: 5px;
+  font-size: 1.5625vw;
+  font-family: "Nunito";
+  font-weight: 600;
+}
+
+.text i {
+  position: absolute;
+  top: 10%;
+  right: 0%;
+  font-size: 1.5vw;
+}
+
+.text-card .checkbox {
+  position: absolute;
+  bottom: 0%;
+}
+
+.card-history {
+  margin-left: 3%;
+  width: 70%;
+  height: 20vh;
+  margin-bottom: 3%;
+  position: relative;
+}
+
+.history-container h5 {
+  padding-left: 3%;
+  color: rgba(196, 196, 196, 1);
+  padding-top: 5px;
+  font-size: 1.5625vw;
+  font-family: "Nunito";
+  font-weight: 600;
+}
+
+.img {
+  width: 20%;
+  height: 100%;
+}
+
+.img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.aka {
+  position: absolute;
+  right: -3%;
+  top: 30%;
+}
+
+.card-history .vehicle {
+  position: absolute;
+  top: 0%;
+  left: 25%;
+  font-size: 1.171875vw;
+  font-family: "Nunito";
+}
+
+.card-history .price {
+  position: absolute;
+  bottom: 15%;
+  left: 25%;
+  font-size: 1.171875vw;
+  font-family: "Nunito";
+}
+
+.card-history .status {
+  position: absolute;
+  bottom: 0%;
+  left: 25%;
+  color: green;
+  font-size: 1.171875vw;
+  font-family: "Nunito";
+}

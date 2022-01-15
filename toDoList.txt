@@ -1,0 +1,16 @@
+TO DO LIST
+
+untuk search pake axios jugak
+
+patch untuk profile page
+
+result dari login bawa user id trus get data by id yang ada di localstorage
+
+buat page add vehicle
+
+buat page edit vehicle
+
+
+RESPONSIVE
+
+NOTED HARUS SELESAI SEMUA BESOK

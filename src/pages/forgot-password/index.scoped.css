@@ -1,0 +1,86 @@
+.jumbotron {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/src/img/forgot-pass-min.jpg);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.back-button i {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  color: white;
+  font-size: 3vw;
+}
+
+.jumbotron h1 {
+  padding-top: 10%;
+  font-family: "Playfair Display";
+  text-align: center;
+  font-size: 4.166666666666667vw;
+  font-weight: 700;
+  color: white;
+}
+
+.form-container {
+  position: absolute;
+  top: 40%;
+  left: 33%;
+  width: 35.677083333333336vw;
+}
+
+input {
+  width: 29.1015625vw;
+  height: 10.589812332439678vh;
+  background-color: rgba(255, 255, 255, 0.26);
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  margin: auto;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+input:focus {
+  background-color: rgba(255, 255, 255, 0.26);
+  color: white;
+  font-size: 1.5625vw;
+}
+
+::placeholder {
+  font-size: 1.5625vw;
+  color: white;
+}
+
+.btn-warning {
+  margin-top: 5%;
+  margin-left: 9.4%;
+  width: 29.1015625vw;
+  height: 10.589812332439678vh;
+  background-color: rgba(255, 205, 97, 1);
+  color: rgba(57, 57, 57, 1);
+  font-weight: 700;
+  font-size: 1.5625vw;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+input:focus,
+.btn-warning:focus {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.form-container p {
+  text-align: center;
+  font-size: 1.5625vw;
+  font-family: "Nunito";
+  font-weight: 900;
+  padding-top: 7%;
+  color: white;
+}
+
+a {
+  color: white;
+}

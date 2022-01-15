@@ -1,0 +1,526 @@
+.main-container {
+  width: 100%;
+  height: 1463px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-areas: "left right";
+}
+
+.btn-warning {
+  background-color: rgba(255, 205, 97, 1) !important;
+}
+
+.btn-dark {
+  background-color: rgba(57, 57, 57, 1) !important;
+}
+
+.btn-light {
+  background-color: rgba(255, 255, 255, 1) !important;
+}
+
+.row {
+  width: 100%;
+}
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: rgba(57, 57, 57, 1) !important;
+  color: rgba(255, 205, 97, 1);
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+#toast {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: rgba(57, 57, 57, 1) !important;
+  color: rgba(255, 205, 97, 1);
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+}
+
+#toast.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+.left-container {
+  grid-area: left;
+  background-image: url(../../img/Log-in-img-van-min.jpg);
+  background-size: cover;
+  background-position-x: 100%;
+}
+
+.right-container {
+  grid-area: right;
+  justify-content: center;
+}
+
+.right-container h1 {
+  font-size: 48px;
+  font-family: "Playfair Display";
+  font-weight: 700;
+  padding-top: 2%;
+  padding-left: 17%;
+  text-shadow: 0px 3px 4px #373737;
+}
+
+.form-container {
+  width: 100%;
+  height: 38%;
+}
+
+.mid-text {
+  position: relative;
+}
+
+.first {
+  position: absolute;
+  left: 1%;
+  top: 24%;
+}
+
+.second {
+  position: absolute;
+  right: 1%;
+  top: 25%;
+}
+
+.right-container hr {
+  border-top: 2px solid rgba(57, 57, 57, 0.5);
+  width: 25%;
+}
+
+.input {
+  margin-bottom: 2%;
+}
+.email {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(218, 218, 218, 0.28) !important;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.password {
+  margin-bottom: 5%;
+  height: 17%;
+  background-color: rgba(218, 218, 218, 0.28) !important;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.login {
+  height: 17%;
+  margin-top: 3%;
+}
+
+.form-container button {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.form-container h4 {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "Mulish";
+  padding-top: 1%;
+  color: rgba(57, 57, 57, 1);
+}
+
+.form-container h3 {
+  font-size: 150%;
+  font-family: "Mulish";
+  color: rgba(57, 57, 57, 0.5);
+  padding-top: 3%;
+  padding-bottom: 5%;
+}
+
+.btn-light {
+  height: 17%;
+  background-color: #ffffff;
+}
+
+.btn:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.btn-light img {
+  height: 60%;
+}
+
+.signup {
+  height: 17%;
+}
+
+.footer-container-signup {
+  grid-area: right;
+  margin-top: 14%;
+  width: 100%;
+  height: 48.6%;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  width: 10%;
+  height: 10%;
+  background-repeat: no-repeat;
+  background-image: url(../../img/logo-min.png);
+  background-size: cover;
+  background-position: center;
+  left: 8%;
+  top: 11%;
+  border-radius: 50%;
+}
+
+.footer-container-signup h3 {
+  padding-top: 30%;
+  padding-right: 25%;
+  padding-left: 10%;
+  font-size: 30px;
+  font-family: "Mulish";
+  font-weight: 300;
+}
+
+.footer-container-signup h4 {
+  padding-top: 5%;
+  padding-right: 25%;
+  padding-left: 10%;
+  font-size: 30px;
+  font-family: "Mulish";
+  font-weight: 300;
+}
+
+.footer-container-signup hr {
+  position: absolute;
+  bottom: 6%;
+  height: 3px;
+  width: 80%;
+  left: 10%;
+  border: 0;
+  box-shadow: inset 0 12px 12px - 12px rgba(0, 0, 0, 0.5);
+}
+
+.icon {
+  position: absolute;
+  bottom: 2%;
+  left: 35%;
+  width: 30%;
+}
+
+.icon i {
+  font-size: 30px;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+@media screen and (max-width: 1200px) and (min-width: 992px) {
+  .main-container {
+    height: 1000px;
+  }
+
+  .left-container {
+    background-image: url(../../img//Log-in-img-van-min.jpg);
+  }
+
+  .mid-text hr {
+    width: 20%;
+  }
+
+  .first {
+    left: 0%;
+  }
+
+  .footer-container-signup {
+    height: 44.5%;
+  }
+
+  .logo {
+    top: 25%;
+    width: 8%;
+    height: 10%;
+    border-radius: 50%;
+  }
+  .footer-container-signup h3 {
+    padding-top: 40%;
+    font-size: 20px;
+  }
+
+  .footer-container-signup h4 {
+    font-size: 20px;
+  }
+  .icon {
+    bottom: 0;
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px) {
+  .main-container {
+    height: 900px;
+  }
+
+  .left-container {
+    background-image: url(../../img//Log-in-img-van-min.jpg);
+  }
+
+  .mid-text {
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+  .mid-text hr {
+    width: 15%;
+  }
+  .footer-container-signup {
+    margin-top: 25%;
+    height: 44%;
+  }
+
+  .logo {
+    top: 30%;
+    width: 10%;
+  }
+
+  .footer-container-signup h3 {
+    padding-top: 45%;
+    font-size: 20px;
+  }
+
+  .footer-container-signup h4 {
+    font-size: 20px;
+  }
+
+  .icon i {
+    font-size: 120%;
+    text-align: center;
+  }
+
+  .icon {
+    bottom: 0%;
+    left: 34%;
+  }
+}
+
+/* TABLET */
+@media screen and (max-width: 767px) and (min-width: 576px) {
+  .main-container {
+    background-image: url(../../img//Log-in-img-van-min.jpg);
+    background-color: royalblue;
+    background-size: cover;
+    position: relative;
+    background-position: center;
+    height: 850px;
+  }
+  .left-container {
+    background-image: none;
+  }
+
+  .mid-text h3 {
+    color: rgb(73, 73, 73);
+  }
+
+  .right-container {
+    border-radius: 10px;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8);
+    top: 2%;
+    left: -90%;
+    width: 180%;
+  }
+
+  .footer-container-signup {
+    margin-top: 5%;
+    height: 200px;
+  }
+
+  .email {
+    background-color: rgb(255, 255, 255) !important;
+  }
+
+  .password {
+    background-color: rgb(255, 255, 255) !important;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .icon {
+    left: 0%;
+  }
+
+  .footer-container-signup h3 {
+    text-align: center;
+    padding-top: 6%;
+    padding-left: 20%;
+    font-size: 20px;
+  }
+
+  .footer-container-signup h4 {
+    display: none;
+  }
+
+  .footer-container-signup hr {
+    top: 65%;
+  }
+
+  .icon i {
+    font-size: 30px;
+  }
+
+  .icon {
+    left: 33%;
+    bottom: 2%;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .main-container {
+    background-image: url(../../img//Log-in-img-van-min.jpg);
+    background-size: cover;
+    position: relative;
+    background-position: center;
+    height: 658px;
+  }
+
+  .main-container h1 {
+    text-align: center;
+    padding-right: 20%;
+  }
+
+  .form-group {
+    position: absolute;
+    left: 5%;
+    width: 90%;
+  }
+  .left-container {
+    background-image: none;
+  }
+  .right-container {
+    border-radius: 10px;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8);
+    top: 2%;
+    left: -85%;
+    width: 170%;
+    height: 95%;
+  }
+
+  h4 {
+    padding-bottom: 5%;
+  }
+
+  .footer-container-signupr {
+    margin-top: 20%;
+    height: 150px;
+  }
+
+  .footer-container-signup h4 {
+    display: none;
+  }
+
+  .email,
+  .password {
+    width: 70%;
+  }
+
+  .email {
+    background-color: rgb(255, 255, 255) !important;
+  }
+
+  .password {
+    background-color: rgb(255, 255, 255) !important;
+  }
+
+  .login {
+    width: 70%;
+  }
+
+  .btn-light {
+    width: 70%;
+  }
+
+  .signup {
+    width: 70%;
+  }
+
+  .mid-text h3,
+  hr {
+    display: none;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .icon i {
+    font-size: 20px;
+  }
+
+  .footer-container-signup h3 {
+    display: none;
+  }
+}

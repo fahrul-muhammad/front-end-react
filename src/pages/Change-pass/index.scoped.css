@@ -1,0 +1,67 @@
+.wrapper {
+  width: 100%;
+  height: 105vh;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(/src/img/white-JEEP-min.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.wrapper h1 {
+  font-family: "Playfair Display";
+  text-align: center;
+  font-weight: 600;
+  padding-top: 3%;
+  padding-bottom: 5%;
+  font-size: 3.5vw;
+  color: white;
+  text-decoration: underline;
+}
+
+.form-container {
+  margin: auto;
+  border-radius: 10px;
+  width: 40%;
+  height: 55%;
+
+  background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.form-container p {
+  padding-left: 2%;
+  padding-right: 2%;
+  font-family: "Nunito";
+  font-size: 2vw;
+}
+
+input {
+  border: none;
+}
+
+.form-control {
+  height: 10vh;
+  margin: auto;
+  width: 90%;
+  margin-bottom: 3%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  border-radius: 6px;
+}
+
+.form-container p {
+  padding-top: 5%;
+  text-align: center;
+}
+
+.btn-warning {
+  margin: auto;
+  width: 90%;
+  border-radius: 6px;
+  width: 90%;
+  height: 10vh;
+  background-color: rgba(255, 205, 97, 1);
+  color: rgba(57, 57, 57, 1);
+  font-size: 1.3vw;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  text-align: center;
+}

@@ -1,0 +1,210 @@
+.container-profile {
+  display: grid;
+  width: 100%;
+  height: 750px;
+  position: relative;
+}
+
+.profile h3 {
+  font-family: "Nunito";
+  font-size: 36px;
+  font-weight: 700;
+  padding-left: 3%;
+  padding-top: 5%;
+}
+
+.card {
+  position: absolute;
+  top: 30%;
+  left: 37%;
+  width: 400px;
+  height: 440px;
+  border-color: white;
+}
+
+.profile-pic {
+  margin-left: 23%;
+  width: 215px;
+  height: 215px;
+  border-radius: 50%;
+  background-image: url(/src/img/dummy-profile.png);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  background-color: aquamarine;
+}
+
+.profile-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.edit {
+  width: 50px;
+  height: 50px;
+  background-color: #ffcd61;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0;
+  right: 0%;
+  background-image: url(../../img/pen-min.png);
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: center;
+}
+
+.edit:hover {
+  cursor: pointer;
+}
+
+.card h1 {
+  text-align: center;
+  font-family: "Playfair Display";
+  font-weight: 700;
+  font-size: 48px;
+  padding-top: 10%;
+}
+
+.card h4 {
+  font-family: "Nunito";
+  text-align: center;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.detail {
+  margin-top: 5%;
+  margin-left: 12%;
+  width: 302px;
+  height: 82px;
+}
+
+.detail h4 {
+  color: rgba(184, 190, 205, 1);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
+}
+
+.gender {
+  width: 40%;
+  position: absolute;
+  bottom: 5%;
+  left: 35%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.form-check label {
+  padding-left: 20px;
+  font-size: 1.5625vw;
+}
+
+.form-check-input {
+  height: 4.021447721179625vh;
+  width: 1.953125vw;
+}
+
+/* contact */
+.contact {
+  width: 93%;
+  margin-left: 3%;
+  margin-right: 5%;
+  margin-top: 5%;
+  height: 930px;
+}
+
+.contact h1,
+h2 {
+  padding-bottom: 2%;
+  font-size: 24px;
+}
+
+.contact label {
+  font-size: 24px;
+  color: #9f9f9f;
+}
+
+.contact .form-label {
+  margin-bottom: 2%;
+}
+
+.contact .form-control {
+  height: 60px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid black;
+  border-radius: 0%;
+  margin-bottom: 2%;
+}
+
+.wraping {
+  width: 100%;
+  margin-top: 3%;
+}
+
+.change {
+  margin-left: 1%;
+  background-color: #ffcd61;
+  color: #393939;
+}
+
+.btn-secondary {
+  background-color: rgba(57, 57, 57, 1) !important;
+  color: #ffcd61;
+}
+
+.edit-btn a {
+  text-decoration: none;
+  color: #ffcd61;
+}
+
+.edit-btn:hover {
+  color: #ffcd61;
+  background-color: #2c2c2c;
+}
+
+.cancel-btn {
+  margin-right: 1%;
+  background-color: rgba(203, 203, 212, 0.27) !important;
+  color: #393939;
+}
+
+.cancel-btn:hover {
+  background-color: rgba(181, 181, 189, 0.27);
+}
+
+.wraping button {
+  width: 322px;
+  height: 69px;
+  font-size: 24px;
+  border-radius: 10px;
+  font-weight: 900;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.btn:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: max-content;
+  color: rgba(57, 57, 57, 1);
+  font-style: "Mulish";
+  font-weight: 700;
+  background-color: #f9f9fb;
+}
+
+@media screen and (min-width: 993px) and (max-width: 1400px) {
+  .wraping button {
+    width: 30%;
+  }
+}

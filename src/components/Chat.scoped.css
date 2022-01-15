@@ -1,0 +1,82 @@
+.main-container {
+  margin-top: 3%;
+  margin-bottom: 4%;
+}
+
+.main-container a {
+  color: black;
+}
+
+.wrapper {
+  margin: auto;
+  height: 15vh;
+  width: 94vw;
+  display: grid;
+  position: relative;
+  border-bottom: 3px solid rgba(218, 218, 218, 1);
+}
+
+.avatar {
+  position: absolute;
+  top: 2%;
+  left: 0%;
+  width: 6.8%;
+  height: 90%;
+  border-radius: 50%;
+  background-color: cornflowerblue;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.username {
+  position: absolute;
+  left: 10%;
+  top: 5%;
+}
+
+.message {
+  position: absolute;
+  bottom: 0%;
+  left: 10%;
+}
+
+h3 {
+  font-size: 1.5625vw;
+  font-family: "Poppins";
+  font-weight: bold;
+}
+
+p {
+  font-size: 1.5625vw;
+  font-family: "Poppins";
+}
+
+h5 {
+  position: absolute;
+  right: 0%;
+  top: 5%;
+  color: rgba(154, 154, 157, 1);
+}
+
+.unread p {
+  font-size: 1.5625vw;
+  font-weight: bold;
+  font-family: "Poppins";
+}
+
+.count {
+  position: absolute;
+  padding-top: 4px;
+  text-align: center;
+  right: 0%;
+  bottom: 20%;
+  height: 30%;
+  width: 2.4%;
+  border-radius: 50%;
+  background-color: rgba(255, 205, 97, 1);
+}
