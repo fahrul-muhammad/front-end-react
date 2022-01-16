@@ -4,6 +4,7 @@ import axios from "axios";
 
 // component
 import NavLogin from "../../components/navLogin";
+import Navbar from "../../components/header";
 import Popular from "../../components/popularVehc";
 import Card from "../../components/Card";
 import Footer from "../../components/footerTemp";
@@ -30,6 +31,7 @@ export default class index extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLogin: false,
       car: [],
       motor: [],
       bike: [],
@@ -82,6 +84,11 @@ export default class index extends Component {
     this.getCar();
     this.getMotor();
     this.getBike();
+    if (this.props.token) {
+      this.setState({ isLogin: false });
+    } else {
+      this.setState({ isLogin: true });
+    }
   }
 
   render() {
@@ -94,7 +101,7 @@ export default class index extends Component {
     }
     return (
       <main>
-        <NavLogin />
+        {!this.state.isLogin ? <NavLogin /> : <Navbar />}
         <div class="row height d-flex justify-content-center align-items-center">
           <div class="col-md-11">
             <div class="form">

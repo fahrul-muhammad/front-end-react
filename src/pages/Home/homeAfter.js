@@ -12,16 +12,28 @@ class homeAfter extends Component {
     super(props);
     this.state = {
       isLogin: true,
+      isOwner: false,
     };
   }
 
   componentDidMount() {
+    this.isOwner();
     if (this.props.token) {
       this.setState({ isLogin: false });
     } else {
       this.setState({ isLogin: true });
     }
   }
+
+  isOwner = () => {
+    const { role_id } = this.props.auth;
+    console.log(role_id);
+    if (role_id === 2) {
+      this.setState({ isOwner: true });
+    } else {
+      this.setState({ isOwner: false });
+    }
+  };
 
   render() {
     return (
@@ -93,6 +105,11 @@ class homeAfter extends Component {
           </div>
         </div>
         <Galleryimg />
+        <div className={this.state.isOwner ? "add-button" : "hide"}>
+          <a href="/add_vehicle">
+            <button className="btn btn-secondary">Add new item</button>
+          </a>
+        </div>
         <Testimoni />
         <Footer />
       </main>
@@ -102,6 +119,7 @@ class homeAfter extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    auth: state.auth.userData,
     token: state.auth.token,
   };
 };

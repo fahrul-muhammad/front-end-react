@@ -31,8 +31,20 @@ export default class Router extends Component {
         <ReduxProvider store={store}>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
+            <Route
+              path="/login"
+              render={(routerProps) => {
+                if (accessToken) return <Redirect from="/login" to="/" />;
+                return <Login {...routerProps} />;
+              }}
+            />
+            <Route
+              path="/signup"
+              render={(routerProps) => {
+                if (accessToken) return <Redirect from="/signup" to="/" />;
+                return <Signup {...routerProps} />;
+              }}
+            />
             <Route
               path="/profile"
               render={(routerProps) => {
@@ -54,13 +66,7 @@ export default class Router extends Component {
                 return <EditVehicle {...routerProps} />;
               }}
             />
-            <Route
-              path="/vehicle_type"
-              render={(routerProps) => {
-                if (!accessToken) return <Redirect from="/vehicle_type" to="/" />;
-                return <VehicleType {...routerProps} />;
-              }}
-            />
+            <Route path="/vehicle_type" component={VehicleType} />
             <Route
               path="/chat"
               render={(routerProps) => {
