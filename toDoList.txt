@@ -1,2 +1,19 @@
 TO DO LIST
 
+deploy ke netlify
+
+patch user sama vehicle
+
+popular vehicle axios to back end
+
+result axios paginated to card
+
+mengubah data yang di simpan ke dalam local storage menjadi token saj
+
+transaksi
+
+otorisai
+
+force url untuk otorisasi ke add vehicle dan update vehicle
+
+nyembunyiin input file pada profile yang pensil itu loh

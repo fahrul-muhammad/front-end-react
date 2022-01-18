@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./index.scoped.css";
-// import axios from "axios";
+import axios from "axios";
 
 // component
 import Header from "../../components/navLogin";
@@ -21,6 +21,22 @@ export default class index extends Component {
     const number = this.state.value;
     this.setState({ value: number + 1 });
   };
+
+  getVehicle = () => {
+    const URL = process.env.REACT_APP_HOST + "/vehicle/search?name=brio";
+    axios
+      .get(URL)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  componentDidMount() {
+    this.getVehicle();
+  }
 
   onClickMinus = () => {
     const number = this.state.value;
@@ -102,7 +118,7 @@ export default class index extends Component {
             </button>
           </div>
           <div className="right-button">
-            <button type="button" class="btn btn-secondary ">
+            <button type="button" class="btn btn-secondary" onClick={this.getVehicle}>
               Save item
             </button>
           </div>

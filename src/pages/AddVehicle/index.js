@@ -1,27 +1,88 @@
 import React, { Component } from "react";
 import "./index.scoped.css";
+import axios from "axios";
+import FormData from "form-data";
 
 // component
 import Header from "../../components/navLogin";
 import Footer from "../../components/footerTemp";
 
-export default class index extends Component {
-  constructor() {
-    super();
+// redux
+import { connect } from "react-redux";
+
+class index extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
-      value: 1,
+      name: "",
+      price: 0,
+      category: 0,
+      image: "",
+      location: "",
+      stock: 1,
+      description: "",
     };
   }
 
+  formChange = (e) => {
+    const data = { ...this.state };
+    data[e.target.name] = e.target.value;
+    this.setState(data);
+  };
+
+  fileChange = (event) => {
+    const file = event.target.files[0];
+    const data = { ...this.state };
+    if (file) {
+      data.image = file;
+      this.setState(data);
+    }
+    event.preventDefault();
+  };
+
+  _setData = () => {
+    const forms = new FormData();
+    forms.append("name", this.state.name);
+    forms.append("price", this.state.price);
+    forms.append("category", this.state.category);
+    forms.append("image", this.state.image);
+    forms.append("location", this.state.location);
+    forms.append("stock", this.state.stock);
+    forms.append("description", this.state.description);
+    return forms;
+  };
+
+  postVehicle = (e) => {
+    const forms = this._setData();
+    const URL = process.env.REACT_APP_HOST + "/vehicle";
+    axios({
+      url: URL,
+      method: "POST",
+      data: forms,
+      headers: { "content-type": "multipart/form-data" },
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(this.state);
+      });
+  };
+
+  // componentDidMount() {
+  //   console.log(this.props.token);
+  // }
+
   onClickPlus = () => {
-    const number = this.state.value;
-    this.setState({ value: number + 1 });
+    const number = this.state.stock;
+    this.setState({ stock: number + 1 });
   };
 
   onClickMinus = () => {
-    const number = this.state.value;
+    const number = this.state.stock;
     if (number > 1) {
-      this.setState({ value: number - 1 });
+      this.setState({ stock: number - 1 });
     } else {
       return;
     }
@@ -39,16 +100,21 @@ export default class index extends Component {
             <div className="img-container">
               <div className="first" />
               <div className="left-img" />
-              <div className="right-img" />
+              <div className="right-img">
+                <input type="file" name="image" onChange={this.fileChange} />
+              </div>
             </div>
           </div>
           <div className="right-container">
-            <input class="form-control" type="text" placeholder="Name (Max up to 50 word)" aria-label="default input example" />
-            <input class="form-control" type="text" placeholder="Location" aria-label="default input example" />
-            <input class="form-control" type="text" placeholder="Description (max up to 150 words)" aria-label="default input example" />
+            <input class="form-control" type="text" name="name" placeholder="Name (Max up to 50 word)" onChange={this.formChange} aria-label="default input example" />
+
+            <input class="form-control" type="text" placeholder="Location" name="location" onChange={this.formChange} aria-label="default input example" />
+
+            <input class="form-control" type="text" placeholder="Description (max up to 150 words)" aria-label="default input example" name="description" onChange={this.formChange} />
+
             <div className="input-price">
               <p>Price :</p>
-              <input class="form-control" type="text" placeholder="Description (max up to 150 words)" aria-label="default input example" />
+              <input class="form-control" type="text" placeholder="Description (max up to 150 words)" aria-label="default input example" name="price" onChange={this.formChange} />
             </div>
             <div className="status">
               <p>Status :</p>
@@ -66,7 +132,7 @@ export default class index extends Component {
                 <button type="button" class="btn btn-light" onClick={this.onClickMinus}>
                   -
                 </button>
-                <p>{this.state.value}</p>
+                <p>{this.state.stock}</p>
                 <button type="button" class="btn btn-warning" onClick={this.onClickPlus}>
                   +
                 </button>
@@ -77,17 +143,17 @@ export default class index extends Component {
         <div className="button-container">
           <div className="left-button">
             <div className="dropdown-sort">
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Add Item To</option>
+              <select class="form-select" name="category" aria-label="Default select example" onChange={this.formChange}>
+                {/* <option selected>Add Item To</option> */}
                 <option value="1">Car</option>
                 <option value="2">Motorbike</option>
-                <option value="2">Bike</option>
-              </select>{" "}
+                <option value="3">Bike</option>
+              </select>
             </div>
             <i class="bi bi-caret-down-fill" />
           </div>
           <div className="right-button">
-            <button type="button" class="btn btn-warning ">
+            <button type="button" class="btn btn-warning" onClick={this.postVehicle}>
               Save item
             </button>
           </div>
@@ -97,3 +163,11 @@ export default class index extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    token: state.auth.token,
+  };
+};
+
+export default connect(mapStateToProps)(index);

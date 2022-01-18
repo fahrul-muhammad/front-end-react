@@ -24,8 +24,14 @@ import store from "./redux/store";
 
 export default class Router extends Component {
   render() {
-    const state = JSON.parse(localStorage.getItem("state"));
-    const { token: accessToken } = state.auth;
+    let data = localStorage.getItem("state");
+    // const state = JSON.parse(localStorage.getItem("state"));
+    if (data && data !== null) {
+      data = JSON.parse(data);
+    }
+    const { role_id } = data.auth.userData;
+    console.log(role_id);
+    const { token: accessToken } = data.auth;
     return (
       <BrowserRouter>
         <ReduxProvider store={store}>
@@ -120,7 +126,9 @@ export default class Router extends Component {
             <Route
               path="/add_vehicle"
               render={(routerProps) => {
-                if (!accessToken) return <Redirect from="/add_vehicle" to="/" />;
+                if (!accessToken) {
+                  return <Redirect from="/add_vehicle" to="/" />;
+                }
                 return <AddVehicle {...routerProps} />;
               }}
             />
