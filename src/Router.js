@@ -29,8 +29,8 @@ export default class Router extends Component {
     if (data && data !== null) {
       data = JSON.parse(data);
     }
-    const { role_id } = data.auth.userData;
-    console.log(role_id);
+    // const { role_id } = data.auth.userData;
+    // console.log(role_id);
     const { token: accessToken } = data.auth;
     return (
       <BrowserRouter>
