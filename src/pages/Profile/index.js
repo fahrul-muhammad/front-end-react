@@ -32,7 +32,7 @@ class index extends Component {
 
   fileChange = (event) => {
     const file = event.target.files[0];
-    const data = { ...this.state.update };
+    const data = { ...this.state };
     if (file) {
       data.profilepic = file;
       this.setState(data);

@@ -24,14 +24,12 @@ import store from "./redux/store";
 
 export default class Router extends Component {
   render() {
-    let data = localStorage.getItem("state");
-    // const state = JSON.parse(localStorage.getItem("state"));
-    if (data && data !== null) {
-      data = JSON.parse(data);
-    }
-    // const { role_id } = data.auth.userData;
+    // const data = localStorage.getItem("state");
+    const state = JSON.parse(localStorage.getItem("state"));
+
+    // const role_id = state.auth.userData.role_id || null;
     // console.log(role_id);
-    const { token: accessToken } = data.auth;
+    const accessToken = state ? state.auth.token : null;
     return (
       <BrowserRouter>
         <ReduxProvider store={store}>
