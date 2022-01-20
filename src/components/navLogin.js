@@ -16,23 +16,25 @@ class navLogin extends Component {
     };
   }
 
-  // formChange = (e) => {
-  //   const data = { ...this.state };
-  //   data[e.target.name] = e.target.value;
-  //   this.setState(data);
-  // };
-
   componentDidMount() {
     this.setState({ users: this.props.users });
-    // this.userData();
   }
 
-  usersOut = () => {
+  LogoutModal = () => {
+    let myModal = document.getElementById("myModal");
+    let myInput = document.getElementById("myInput");
+
+    myModal.addEventListener("shown.bs.modal", function() {
+      myInput.focus();
+    });
+  };
+
+  LogOut = () => {
     this.props.logout();
   };
 
   render() {
-    console.log(this.state);
+    console.log(this.props);
     const profilepic = this.props.users.profilepic || defaultImg;
     return (
       <nav className="navbar navbar-expand-sm navbar-light bg-light log-nav">
@@ -73,27 +75,46 @@ class navLogin extends Component {
             </div>
           </a>
           <div className="profile-img">
-            <div class="btn-group dropstart ">
+            <div className="btn-group dropstart ">
               {/* <img src={"http://localhost:8000" + this.state.profilepic} alt="" /> */}
-              <img src={profilepic} alt="" />
-              <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" />
-              <ul class="dropdown-menu ">
+              <img src={process.env.REACT_APP_HOST + profilepic || defaultImg} alt="" />
+              <button type="button" className="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" />
+              <ul className="dropdown-menu ">
                 <li>
-                  <a class="dropdown-item" href="/profile">
+                  <a className="dropdown-item" href="/profile">
                     Edit Profile
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="/">
+                  <a className="dropdown-item" href="/">
                     Help
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="/" onClick={this.usersOut}>
+                  <a className="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href="/" onClick={this.LogoutModal}>
                     Log Out
                   </a>
                 </li>
               </ul>
+            </div>
+          </div>
+          <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-body">Are you sure to LogOut?</div>
+                <div className="modal-footer">
+                  <div className="modal-cancel">
+                    <button type="button" className="btn btn-danger  " data-bs-dismiss="modal">
+                      CANCEL
+                    </button>
+                  </div>
+                  <div className="modal-confirm">
+                    <button type="button" className="btn btn-success  " onClick={this.LogOut} data-bs-dismiss="modal">
+                      YES
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

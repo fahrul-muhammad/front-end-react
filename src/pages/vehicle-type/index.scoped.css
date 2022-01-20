@@ -15,6 +15,46 @@
   color: #9ca3af;
 }
 
+.paginasi-container {
+  margin: auto;
+  width: 30%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "prev page next";
+  grid-gap: 10%;
+}
+
+.paginasi-container h1 {
+  grid-area: page;
+  text-align: center;
+}
+
+.prev {
+  grid-area: prev;
+  width: 100%;
+}
+
+.paginasi-container button {
+  width: 100%;
+  background-color: #ffcd61;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.paginasi-container button:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.next {
+  grid-area: next;
+  width: 100%;
+}
+
+.next button {
+  width: 100%;
+  background-color: #ffcd61;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
 .car {
   height: 80vh;
   width: 90%;
@@ -24,7 +64,7 @@
 .cards-containers {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .car h1 {

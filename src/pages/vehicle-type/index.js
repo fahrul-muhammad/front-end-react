@@ -18,16 +18,17 @@ class index extends Component {
       car: [],
       motor: [],
       bike: [],
+      page: 1,
     };
   }
 
   getCar = () => {
-    const URL = process.env.REACT_APP_HOST + "/vehicle/car?page=1&limit=4";
+    const URL = `${process.env.REACT_APP_HOST}/vehicle/car?page=${this.state.page}&limit=4`;
     axios
       .get(URL)
       .then((res) => {
         const { result } = res.data;
-        console.log(result);
+        console.log("THIS IS CAR RESULT", result.result.meta);
         this.setState({ car: result.result.data });
       })
       .catch((err) => {
@@ -36,7 +37,7 @@ class index extends Component {
   };
 
   getMotor = () => {
-    const URL = process.env.REACT_APP_HOST + "/vehicle/motorbike?page=1&limit=4";
+    const URL = `${process.env.REACT_APP_HOST}/vehicle/motorbike?page=${this.state.page}&limit=4`;
     axios
       .get(URL)
       .then((res) => {
@@ -49,12 +50,11 @@ class index extends Component {
   };
 
   getBike = () => {
-    const URL = process.env.REACT_APP_HOST + "/vehicle/bike?page=1&limit=4";
+    const URL = `${process.env.REACT_APP_HOST}/vehicle/bike?page=${this.state.page}&limit=4`;
     axios
       .get(URL)
       .then((res) => {
         const { result } = res.data;
-        console.log("THIS IS RESULT", result.result.data);
         this.setState({ bike: result.result.data });
       })
       .catch((err) => {
@@ -62,8 +62,30 @@ class index extends Component {
       });
   };
 
+  nextPage = () => {
+    const number = this.state.page;
+    this.setState({ page: number + 1 }, () => {
+      this.getCar();
+      this.getMotor();
+      this.getBike();
+    });
+  };
+
+  prevPage = () => {
+    const number = this.state.page;
+    if (number >= 1) {
+      this.setState({ page: number - 1 }, () => {
+        this.getCar();
+        this.getMotor();
+        this.getBike();
+      });
+    } else {
+      return;
+    }
+  };
+
   componentDidMount() {
-    console.log(this.state.car);
+    console.log(this.state.page);
     this.getCar();
     this.getMotor();
     this.getBike();
@@ -88,6 +110,15 @@ class index extends Component {
               </span>{" "}
             </div>
           </div>
+        </div>
+        <div className="paginasi-container">
+          <button type="button" class="btn btn-warning" onClick={this.prevPage}>
+            Previous
+          </button>
+          <h1>{this.state.page}</h1>
+          <button type="button" class="btn btn-warning" onClick={this.nextPage}>
+            Next
+          </button>
         </div>
         <Popular />
         <div class="car">

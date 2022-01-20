@@ -61,23 +61,6 @@ class index extends Component {
       });
   };
 
-  // if (this.props.auth.isFulfilled) {
-  // <Redirect to="/" />;
-  //   console.log(this.props.auth.isFulfilled);
-  // } else {
-  //   console.log("Gagal");
-  //   let x = document.getElementById("snackbar");
-  //   x.className = "show";
-  //   setTimeout(function() {
-  //     x.className = x.className.replace("show", "");
-  //   }, 3000);
-  // }
-
-  componentDidUpdate(prevProps) {
-    console.log(process.env.REACT_APP_HOST);
-    // console.log(this.props.auth.isFulfilled, prevProps.auth.isFulfilled);
-  }
-
   render() {
     return (
       <section className="main-container">

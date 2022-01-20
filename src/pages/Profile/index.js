@@ -54,11 +54,6 @@ class index extends Component {
     return forms;
   };
 
-  componentDidMount() {
-    // this.setState({ users: this.props.users });
-    // console.log(this.props.token);
-  }
-
   onClickSave = (e) => {
     const URL = process.env.REACT_APP_HOST + "/users";
     const forms = this._setData();
@@ -103,7 +98,7 @@ class index extends Component {
           <h3>Profile</h3>
           <div class="card">
             <div class="profile-pic">
-              <img src={profilepic} alt="profilepic" />
+              <img src={process.env.REACT_APP_HOST + profilepic || defaultImg} alt="profilepic" />
               <div class="edit">
                 <input type="file" name="profilepic" hidden onChange={this.fileChange} ref={this.inputFile} />
                 <button className="edit-profile" onClick={this.handleFile} />

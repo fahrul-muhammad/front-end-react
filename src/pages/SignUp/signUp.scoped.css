@@ -26,15 +26,17 @@
   visibility: hidden;
   min-width: 250px;
   margin-left: -125px;
-  background-color: rgba(57, 57, 57, 1) !important;
-  color: rgba(255, 205, 97, 1);
+  background-color: rgb(252, 252, 252) !important;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  color: rgb(255, 0, 0);
+  font-weight: 700;
   text-align: center;
   border-radius: 2px;
   padding: 16px;
   position: fixed;
   z-index: 1;
   left: 50%;
-  bottom: 30px;
+  top: 30px;
 }
 
 #snackbar.show {
@@ -47,15 +49,17 @@
   visibility: hidden;
   min-width: 250px;
   margin-left: -125px;
-  background-color: rgba(57, 57, 57, 1) !important;
-  color: rgba(255, 205, 97, 1);
+  background-color: rgb(252, 252, 252) !important;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  color: rgb(255, 0, 0);
+  font-weight: 700;
   text-align: center;
   border-radius: 2px;
   padding: 16px;
   position: fixed;
   z-index: 1;
   left: 50%;
-  bottom: 30px;
+  top: 30px;
 }
 
 #toast.show {
@@ -65,46 +69,25 @@
 }
 
 /* Animations to fade the snackbar in and out */
-@-webkit-keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0;
-  }
-  to {
-    bottom: 30px;
-    opacity: 1;
-  }
-}
 
 @keyframes fadein {
   from {
-    bottom: 0;
+    top: 0;
     opacity: 0;
   }
   to {
-    bottom: 30px;
+    top: 30px;
     opacity: 1;
-  }
-}
-
-@-webkit-keyframes fadeout {
-  from {
-    bottom: 30px;
-    opacity: 1;
-  }
-  to {
-    bottom: 0;
-    opacity: 0;
   }
 }
 
 @keyframes fadeout {
   from {
-    bottom: 30px;
+    top: 30px;
     opacity: 1;
   }
   to {
-    bottom: 0;
+    top: 0;
     opacity: 0;
   }
 }

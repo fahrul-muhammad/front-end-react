@@ -16,7 +16,7 @@ class index extends Component {
     this.state = {
       name: "",
       price: 0,
-      category: 0,
+      category: "",
       image: "",
       location: "",
       stock: 1,

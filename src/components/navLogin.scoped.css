@@ -10,6 +10,35 @@
   margin: 0.5% auto 0% auto;
 }
 
+.modal {
+  margin: 0%;
+}
+
+.modal-body {
+  height: 100px;
+  text-align: center;
+  font-size: 1.6vw;
+}
+
+.modal-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "cancel confirm";
+  grid-gap: 10%;
+}
+
+.modal-cancel {
+  grid-area: cancel;
+}
+
+.modal-footer button {
+  width: 100%;
+}
+
+.modal-confirm {
+  grid-area: confirm;
+}
+
 .brand-logo {
   position: absolute;
   left: 0%;

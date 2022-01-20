@@ -18,6 +18,7 @@ class homeAfter extends Component {
 
   componentDidMount() {
     this.isOwner();
+    console.log(this.props.token);
     if (this.props.token) {
       this.setState({ isLogin: false });
     } else {
