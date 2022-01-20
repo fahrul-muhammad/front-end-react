@@ -3,6 +3,7 @@ import Navbar from "../../components/navLogin";
 import Footer from "../../components/footerTemp";
 import axios from "axios";
 import FormData from "form-data";
+import defaultImg from "../../img/dummy-profile.png";
 
 // redux
 import { connect } from "react-redux";
@@ -21,6 +22,7 @@ class index extends Component {
       address: "",
       profilepic: "",
     };
+    this.inputFile = React.createRef();
   }
 
   formChange = (e) => {
@@ -48,7 +50,7 @@ class index extends Component {
     forms.append("phone_number", this.state.phone_number);
     forms.append("DoB", this.state.DoB);
     forms.append("address", this.state.address);
-    forms.append("profilepic", this.state.name);
+    forms.append("profilepic", this.state.profilepic);
     return forms;
   };
 
@@ -83,11 +85,17 @@ class index extends Component {
     // };
   };
 
+  handleFile = (event) => {
+    this.inputFile.current.click();
+    event.preventDefault();
+  };
+
   // changeData = (e) => {
   //   this.onClickSave(e);
   // };
 
   render() {
+    const profilepic = this.props.users.profilepic || defaultImg;
     return (
       <main>
         <Navbar />
@@ -95,9 +103,10 @@ class index extends Component {
           <h3>Profile</h3>
           <div class="card">
             <div class="profile-pic">
-              <img src={process.env.REACT_APP_HOST + this.props.users.profilepic} alt="profilepic" />
+              <img src={profilepic} alt="profilepic" />
               <div class="edit">
-                <input type="file" name="profilepic" onChange={this.fileChange} />
+                <input type="file" name="profilepic" hidden onChange={this.fileChange} ref={this.inputFile} />
+                <button className="edit-profile" onClick={this.handleFile} />
               </div>
             </div>
             <h1>{this.props.users.name}</h1>
@@ -109,7 +118,7 @@ class index extends Component {
           </div>
           <div class="gender">
             <div class="form-check form-check-inline male">
-              <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male" onChange={this.formChange} />
+              <input class="form-check-input" type="radio" name="gender" value="male" onChange={this.formChange} />
               <label class="form-check-label" for="inlineRadio1">
                 Male
               </label>

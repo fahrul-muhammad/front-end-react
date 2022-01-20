@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./index.scoped.css";
 import axios from "axios";
+import { connect } from "react-redux";
 
 // component
 import NavLogin from "../../components/navLogin";
@@ -9,29 +10,11 @@ import Popular from "../../components/popularVehc";
 import Card from "../../components/Card";
 import Footer from "../../components/footerTemp";
 
-// CAR
-import van from "../../img/Log-in-img-van-min.jpg";
-import Lambo from "../../img/lamborgini-min.jpg";
-import Jeep from "../../img/jeep-in-bromo-min.jpg";
-import WhiteJeep from "../../img/white-JEEP-min.jpg";
-
-// MOTORBIKE
-import vespa from "../../img/vesmet-min.jpg";
-import klx from "../../img/motor-cross-min.jpg";
-import honda from "../../img/motor-cool-min.jpg";
-import matic from "../../img/motorbike-in-city-min.jpg";
-
-// BIKE
-import vixie from "../../img/speda-gunung-min.jpg";
-import sportBike from "../../img/sepeda-putih-min.jpg";
-import onthel from "../../img/sepeda-bonceng-min.jpg";
-import whiteFixie from "../../img/sepeda-keren-min.jpg";
-
-export default class index extends Component {
+class index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLogin: false,
+      isLogin: true,
       car: [],
       motor: [],
       bike: [],
@@ -39,13 +22,13 @@ export default class index extends Component {
   }
 
   getCar = () => {
-    const URL = "http://localhost:8000/vehicle/car";
+    const URL = process.env.REACT_APP_HOST + "/vehicle/car?page=1&limit=4";
     axios
       .get(URL)
       .then((res) => {
         const { result } = res.data;
-        /* console.log(result); */
-        this.setState({ car: result });
+        console.log(result);
+        this.setState({ car: result.result.data });
       })
       .catch((err) => {
         console.error(err);
@@ -53,13 +36,12 @@ export default class index extends Component {
   };
 
   getMotor = () => {
-    const URL = "http://localhost:8000/vehicle/motorbike";
+    const URL = process.env.REACT_APP_HOST + "/vehicle/motorbike?page=1&limit=4";
     axios
       .get(URL)
       .then((res) => {
         const { result } = res.data;
-        /* console.log(result); */
-        this.setState({ motor: result });
+        this.setState({ motor: result.result.data });
       })
       .catch((err) => {
         console.error(err);
@@ -67,13 +49,13 @@ export default class index extends Component {
   };
 
   getBike = () => {
-    const URL = "http://localhost:8000/vehicle/bike";
+    const URL = process.env.REACT_APP_HOST + "/vehicle/bike?page=1&limit=4";
     axios
       .get(URL)
       .then((res) => {
         const { result } = res.data;
-        /* console.log(result); */
-        this.setState({ bike: result });
+        console.log("THIS IS RESULT", result.result.data);
+        this.setState({ bike: result.result.data });
       })
       .catch((err) => {
         console.error(err);
@@ -81,6 +63,7 @@ export default class index extends Component {
   };
 
   componentDidMount() {
+    console.log(this.state.car);
     this.getCar();
     this.getMotor();
     this.getBike();
@@ -92,13 +75,6 @@ export default class index extends Component {
   }
 
   render() {
-    const { car, motor, bike } = this.state;
-    // const { Vehicle_Name } = car[0];
-    if (car.length || motor.length || bike.length > 0) {
-      // console.log(motor[0]);
-      // console.log(bike[0]);
-      console.log(car[0].photos);
-    }
     return (
       <main>
         {!this.state.isLogin ? <NavLogin /> : <Navbar />}
@@ -114,56 +90,41 @@ export default class index extends Component {
           </div>
         </div>
         <Popular />
-        <Card
-          content="Car"
-          isShown={true}
-          firstImg={van}
-          firstPlace="Van"
-          firstCity="Yogyakarta"
-          secondImg={Lambo}
-          secondPlace="Lamborgini"
-          secondCity="Jakarta"
-          thirdImg={Jeep}
-          thirdPlace="Jeep"
-          thirdCity="Malang"
-          fourthImg={WhiteJeep}
-          fourthPlace="White Jeep"
-          fourthCity="Kalimantan"
-        />
-        <Card
-          content="Motorbike"
-          isShown={true}
-          firstImg={vespa}
-          firstPlace="vespa"
-          firstCity="Yogyakarta"
-          secondImg={klx}
-          secondPlace="Honda KLX"
-          secondCity="Kalimantan"
-          thirdImg={honda}
-          thirdPlace="Honda KLX"
-          thirdCity="Kalimantan"
-          fourthImg={matic}
-          fourthPlace="Matic Bike"
-          fourthCity="Yogyakarta"
-        />
-        <Card
-          content="Bike"
-          isShown={true}
-          firstImg={vixie}
-          firstPlace="Fixie"
-          firstCity="Yogyakarta"
-          secondImg={sportBike}
-          secondPlace="Sport Bike"
-          secondCity="Kalimantan"
-          thirdImg={onthel}
-          thirdPlace="Onthel"
-          thirdCity="Malang"
-          fourthImg={whiteFixie}
-          fourthPlace="White Fixie"
-          fourthCity="Yogyakarta"
-        />
+        <div class="car">
+          <h1>Cars</h1>
+          <div class="cards-containers">
+            {this.state.car.map((val) => {
+              return <Card isShown={true} image={`${process.env.REACT_APP_HOST}/${val.photos}`} name={val.Vehicle_Name} city={val.lokasi} />;
+            })}
+          </div>
+        </div>
+        <div class="motor">
+          <h1>Motorbike</h1>
+          <div class="cards-containers">
+            {this.state.motor.map((val) => {
+              return <Card isShown={true} image={`${process.env.REACT_APP_HOST}/${val.photos}`} name={val.Vehicle_Name} city={val.lokasi} />;
+            })}
+          </div>
+        </div>
+        <div class="bike">
+          <h1>Bike</h1>
+          <div class="cards-containers">
+            {this.state.bike.map((val) => {
+              return <Card isShown={true} image={`${process.env.REACT_APP_HOST}/${val.photos}`} name={val.Vehicle_Name} city={val.lokasi} />;
+            })}
+          </div>
+        </div>
         <Footer />
       </main>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth.userData,
+    token: state.auth.token,
+  };
+};
+
+export default connect(mapStateToProps)(index);

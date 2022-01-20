@@ -15,6 +15,75 @@
   color: #9ca3af;
 }
 
+.car {
+  height: 80vh;
+  width: 90%;
+  margin: 2% auto 3.5% auto;
+}
+
+.cards-containers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.car h1 {
+  font-family: "Playfair Display";
+  font-size: 2.34375vw;
+  color: black;
+  font-weight: 700;
+  padding-bottom: 2%;
+}
+
+.car h5 {
+  padding-left: 90%;
+  padding-top: -5%;
+  color: red;
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.motor {
+  height: 80vh;
+  width: 90%;
+  margin: 2% auto 3.5% auto;
+}
+
+.motor h1 {
+  font-family: "Playfair Display";
+  font-size: 2.34375vw;
+  color: black;
+  font-weight: 700;
+  padding-bottom: 2%;
+}
+
+.motor h5 {
+  padding-left: 90%;
+  padding-top: -5%;
+  color: red;
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.bike {
+  height: 80vh;
+  width: 90%;
+  margin: 2% auto 3.5% auto;
+}
+
+.bike h1 {
+  font-family: "Playfair Display";
+  font-size: 2.34375vw;
+  color: black;
+  font-weight: 700;
+  padding-bottom: 2%;
+}
+
+.bike h5 {
+  padding-left: 90%;
+  padding-top: -5%;
+  color: red;
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
 .col-md-11 {
   margin: auto;
   width: 100%;

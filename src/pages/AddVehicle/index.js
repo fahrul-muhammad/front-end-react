@@ -22,7 +22,13 @@ class index extends Component {
       stock: 1,
       description: "",
     };
+    this.inputFile = React.createRef();
   }
+
+  handleFile = (event) => {
+    this.inputFile.current.click();
+    event.preventDefault();
+  };
 
   formChange = (e) => {
     const data = { ...this.state };
@@ -53,6 +59,7 @@ class index extends Component {
   };
 
   postVehicle = (e) => {
+    console.log(this.state);
     const forms = this._setData();
     const URL = process.env.REACT_APP_HOST + "/vehicle";
     axios({
@@ -66,12 +73,11 @@ class index extends Component {
       })
       .catch((err) => {
         console.log(err);
-        console.log(this.state);
       });
   };
 
   // componentDidMount() {
-  //   console.log(this.props.token);
+  //   console.log(this.state);
   // }
 
   onClickPlus = () => {
@@ -101,7 +107,8 @@ class index extends Component {
               <div className="first" />
               <div className="left-img" />
               <div className="right-img">
-                <input type="file" name="image" onChange={this.fileChange} />
+                <input type="file" name="image" hidden onChange={this.fileChange} ref={this.inputFile} />
+                <button className="add" onClick={this.handleFile} />
               </div>
             </div>
           </div>
