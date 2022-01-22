@@ -1,0 +1,86 @@
+.card-history {
+  margin-left: 3%;
+  width: 72.5%;
+  height: 20vh;
+  margin-bottom: 3%;
+  position: relative;
+}
+
+.img {
+  width: 20%;
+  height: 100%;
+}
+
+.img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.aka {
+  position: absolute;
+  right: -3%;
+  top: 30%;
+}
+
+.card-history .vehicle {
+  position: absolute;
+  top: 0%;
+  left: 25%;
+  font-size: 1.171875vw;
+  font-family: "Nunito";
+}
+
+.card-history .price {
+  position: absolute;
+  bottom: 15%;
+  left: 25%;
+  font-size: 1.171875vw;
+  font-family: "Nunito";
+}
+
+.card-history .status {
+  position: absolute;
+  bottom: 0%;
+  left: 25%;
+  color: green;
+  font-size: 1.171875vw;
+  font-family: "Nunito";
+}
+
+.text-card .checkbox {
+  position: absolute;
+  left: 82.5%;
+  bottom: 0%;
+}
+
+.checkbox {
+  position: absolute;
+  left: 78%;
+  top: 14.5%;
+  background-color: yellow;
+}
+
+.form-check-input {
+  display: flex;
+  flex-direction: column;
+  width: 1.953125vw;
+  height: 4.021447721179625vh;
+}
+
+.checkbox label {
+  font-size: 1.5625vw;
+}
+
+.checkbox input {
+  position: absolute;
+}
+
+.rating {
+  position: absolute;
+  top: 38%;
+  left: 25%;
+  font-size: 1.171875vw;
+  font-family: "Nunito";
+}

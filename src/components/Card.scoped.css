@@ -37,6 +37,10 @@
   position: relative;
 }
 
+.img-gallery h4 {
+  color: black;
+}
+
 .img-gallery img {
   border-radius: 10px;
   width: 100%;

@@ -1,26 +1,51 @@
 import React, { Component } from "react";
 import "./index.scoped.css";
+import { connect } from "react-redux";
 import { Modal, Button } from "react-bootstrap";
+import axios from "axios";
 
 // component
 import Navbar from "../../components/navLogin";
 import Footer from "../../components/footerTemp";
+import Card from "../../components/history_card";
 
 // image
 import Lambo from "../../img/lamborgini-min.jpg";
 import jeep from "../../img/white-JEEP-min.jpg";
-import vespa from "../../img/vesmet-min.jpg";
 
-export default class index extends Component {
+class index extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      history: [],
       show: false,
     };
   }
   buttonHandler() {
     this.setState({ show: !this.state.show });
   }
+
+  userHistory = () => {
+    const token = this.props.token;
+    const URL = `${process.env.REACT_APP_HOST}/history/myhistory`;
+    axios({
+      url: URL,
+      headers: { token },
+    })
+      .then((res) => {
+        console.log(res);
+        this.setState({ history: res.data.result });
+        console.log("HISTORY STATE", this.state.history);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  componentDidMount() {
+    this.userHistory();
+  }
+
   render() {
     return (
       <>
@@ -31,7 +56,7 @@ export default class index extends Component {
               <div class="col-md-6">
                 <div class="form">
                   {" "}
-                  <i class="fa fa-search" /> <input type="text" class="form-control form-input" placeholder="Search anything..." />{" "}
+                  <input type="text" class="form-control form-input" placeholder="Search anything..." />{" "}
                 </div>
               </div>
             </div>
@@ -89,7 +114,7 @@ export default class index extends Component {
               </figcaption>
             </div>
           </aside>
-          <div className="history-container">
+          <div className="text-container">
             <h3>Today</h3>
             <div className="text-card">
               <div className="text">
@@ -113,82 +138,46 @@ export default class index extends Component {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className="history-container">
             <h5>A Week Ago</h5>
-            <div className="card-history">
-              <div className="img">
-                <img src={vespa} alt="vehicle" />
-              </div>
-              <p className="vehicle">
-                <strong>Vespa Matic </strong> <br />
-                Jan 18 to 21 2021
-              </p>
-              <p className="price">
-                <strong>Prepayment : Rp. 245.000 </strong>
-              </p>
-              <p className="status">
-                {" "}
-                <strong>Has been Returned</strong>{" "}
-              </p>
-              <div className="aka">
-                <div className="checkbox">
-                  <input class="form-check-input check" type="checkbox" id="checkboxNoLabel" value="" aria-label="..." />
+            {this.state.history.map((val) => {
+              return <Card image={`${process.env.REACT_APP_HOST}/${val.image}`} name={val.vehicle} date={val.date} price={val.prepayment} status={val.status} rating={val.rating} key={val.id} />;
+            })}
+          </div>
+          <div className="modal-container">
+            <Button
+              className="btn btn-warning btn-modal"
+              onClick={() => {
+                this.buttonHandler();
+              }}
+            >
+              Delete selected item
+            </Button>
+            <Modal show={this.state.show} className="modal">
+              <Modal.Body className="modal-body">
+                <h1>Are you sure do you want to delete selected item?</h1>
+                <div className="modal-btn">
+                  <Button
+                    className="btn btn-warning"
+                    onClick={() => {
+                      this.buttonHandler();
+                    }}
+                  >
+                    Yes
+                  </Button>
+                  <Button
+                    className="btn btn-secondary"
+                    onClick={() => {
+                      this.buttonHandler();
+                    }}
+                  >
+                    No
+                  </Button>
                 </div>
-              </div>
-            </div>
-            <div className="card-history">
-              <div className="img">
-                <img src={vespa} alt="vehicle" />
-              </div>
-              <p className="vehicle">
-                <strong>Vespa Matic </strong> <br />
-                Jan 18 to 21 2021
-              </p>
-              <p className="price">
-                <strong>Prepayment : Rp. 245.000 </strong>
-              </p>
-              <p className="status">
-                {" "}
-                <strong>Has been Returned</strong>{" "}
-              </p>
-              <div className="aka">
-                <div className="checkbox">
-                  <input class="form-check-input check" type="checkbox" id="checkboxNoLabel" value="" aria-label="..." />
-                </div>
-              </div>
-            </div>
-            <div className="modal-container">
-              <Button
-                className="btn btn-warning btn-modal"
-                onClick={() => {
-                  this.buttonHandler();
-                }}
-              >
-                Delete selected item
-              </Button>
-              <Modal show={this.state.show} className="modal">
-                <Modal.Body className="modal-body">
-                  <h1>Are you sure do you want to delete selected item?</h1>
-                  <div className="modal-btn">
-                    <Button
-                      className="btn btn-warning"
-                      onClick={() => {
-                        this.buttonHandler();
-                      }}
-                    >
-                      Yes
-                    </Button>
-                    <Button
-                      className="btn btn-secondary"
-                      onClick={() => {
-                        this.buttonHandler();
-                      }}
-                    >
-                      No
-                    </Button>
-                  </div>
-                </Modal.Body>
-              </Modal>
-            </div>
+              </Modal.Body>
+            </Modal>
           </div>
         </div>
         <Footer />
@@ -196,3 +185,12 @@ export default class index extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    users: state.auth.userData,
+    token: state.auth.token,
+  };
+};
+
+export default connect(mapStateToProps)(index);

@@ -132,3 +132,22 @@ main {
   background-color: rgba(57, 57, 57, 1);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
+.popular-container {
+  width: 90%;
+  margin: 3% auto 3% auto;
+}
+
+.popular {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.popular-container h1 {
+  font-family: "Playfair Display";
+  font-size: 2.34375vw;
+  color: black;
+  font-weight: 700;
+  padding-bottom: 2%;
+}

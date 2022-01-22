@@ -1,15 +1,25 @@
 import React, { Component } from "react";
 import "./index.scoped.css";
+import { connect } from "react-redux";
 
 // component
 import Header from "../../components/navLogin";
 import Footer from "../../components/footerTemp";
 
-// image
-// import vehicle from "../../img/sepeda-keren-min.jpg";
+class index extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: {},
+    };
+  }
 
-export default class index extends Component {
+  componentDidMount() {
+    this.setState({ users: this.props.users });
+  }
+
   render() {
+    console.log("USERS DATA", this.state.users);
     return (
       <main>
         <Header />
@@ -76,8 +86,10 @@ export default class index extends Component {
           <div className="s-right">
             <p>Identity : </p>
             <ul>
-              <li>Identity : Samantha Doe (+6290987682) </li>
-              <li>samanthadoe@mail.com</li>
+              <li>
+                Identity : {this.state.users.name} (+{this.state.users.phone_number}){" "}
+              </li>
+              <li>Email : {this.state.users.email}</li>
             </ul>
           </div>
         </div>
@@ -106,3 +118,11 @@ export default class index extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    users: state.auth.userData,
+  };
+};
+
+export default connect(mapStateToProps)(index);

@@ -1,42 +1,56 @@
-import React from "react";
 import "./popularVehc.scoped.css";
+import axios from "axios";
 
-function popularVehc(props) {
-  console.log(props);
-  return (
-    <div class="content">
-      <h1>Popular In Town</h1>
-      <div class="img-container">
-        <div class="img-gallery-1">
-          <figcaption>
-            <h4>Merapi</h4>
-            <p>Yogyakarta</p>
-          </figcaption>
-        </div>
-        <div class="img-gallery-2">
-          <figcaption>
-            <h4>Teluk Bogam</h4>
-            <p>Kalimantan</p>
-          </figcaption>
-        </div>
-        <div class="img-gallery-3">
-          <figcaption>
-            <h4>Bromo</h4>
-            <p>Malang</p>
-          </figcaption>
-        </div>
-        <div class="img-gallery-4">
-          <figcaption>
-            <h4>Malioboro</h4>
-            <p>Yogyakarta</p>
-          </figcaption>
-          <div class="next-btn">
-            <i class="bi bi-chevron-right" />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+import React, { Component } from "react";
+
+export default class popularVehc extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      result: [],
+    };
+  }
+
+  getPopular = () => {
+    const URL = `${process.env.REACT_APP_HOST}/history/popular`;
+    axios({
+      url: URL,
+      method: "GET",
+    })
+      .then((res) => {
+        const { result } = res.data;
+        console.log(result);
+        this.setState({ result: result });
+        console.log("STATE RESULT", this.state.result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  componentDidMount() {
+    this.getPopular();
+  }
+  render() {
+    return (
+      <>
+        {this.state.result.map((val) => {
+          console.log(val);
+          return (
+            <div class="img-container">
+              <div class="img-gallery">
+                <a href={`/vehicle/detail/${val.vehicle_id}`}>
+                  <img src={`${process.env.REACT_APP_HOST}/${val.photo}`} alt="vehicle" />
+                  <figcaption>
+                    <h4>{val.name}</h4>
+                    <p>{val.location}</p>
+                  </figcaption>
+                </a>
+              </div>
+            </div>
+          );
+        })}
+      </>
+    );
+  }
 }
-
-export default popularVehc;

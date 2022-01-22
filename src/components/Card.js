@@ -6,11 +6,13 @@ function Card(props) {
     <>
       <div class="img-container">
         <div class="img-gallery">
-          <img src={props.image} alt="vehicle" />
-          <figcaption>
-            <h4>{props.name}</h4>
-            <p>{props.city}</p>
-          </figcaption>
+          <a href={`/vehicle/detail/${props.id}`}>
+            <img src={props.image} alt="vehicle" />
+            <figcaption>
+              <h4>{props.name}</h4>
+              <p>{props.city}</p>
+            </figcaption>
+          </a>
         </div>
       </div>
     </>

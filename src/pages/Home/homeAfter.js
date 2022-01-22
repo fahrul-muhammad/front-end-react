@@ -105,7 +105,12 @@ class homeAfter extends Component {
             </div>
           </div>
         </div>
-        <Galleryimg />
+        <div className="popular-container">
+          <h1>Popular in Town</h1>
+          <div className="popular">
+            <Galleryimg />
+          </div>
+        </div>
         <div className={this.state.isOwner ? "add-button" : "hide"}>
           <a href="/add_vehicle">
             <button className="btn btn-secondary">Add new item</button>

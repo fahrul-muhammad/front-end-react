@@ -1,59 +1,96 @@
 import "./vehicle.scoped.css";
 import Nav from "../../components/navLogin";
 import Footer from "../../components/footerTemp";
+import axios from "axios";
 
 import React, { Component } from "react";
 
 export default class index extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       counter: 1,
-      price: 89,
+      vehicle: [],
+      price: 0,
     };
   }
 
   onclickPlus = () => {
     const number = this.state.counter;
     const price = this.state.price;
+    console.log(price);
     this.setState({ counter: number + 1 });
-    this.setState({ price: price + 89 });
+    this.setState({ price: price + price });
   };
 
   onclickMinus = () => {
     const number = this.state.counter;
-    const price = this.state.price;
+    const price = this.state.vehicle.price;
     this.setState({ counter: number - 1 });
-    this.setState({ price: price - 89 });
+    this.setState({ price: price - price });
   };
+
+  getVehicle = () => {
+    const URL = `${process.env.REACT_APP_HOST}/vehicle/detail/${this.props.match.params.id}`;
+    console.log(URL);
+    axios({
+      url: URL,
+    })
+      .then((res) => {
+        const vehicle = res.data.result.result[0];
+        this.setState({ vehicle: vehicle });
+        this.setState({ price: vehicle.price });
+        console.log("THIS IS VEHICLE STATE", vehicle);
+      })
+      .then((err) => {
+        console.log(err);
+      });
+  };
+
+  componentDidMount() {
+    this.getVehicle();
+  }
+
   render() {
     return (
       <main>
         <div className="vehicle">
           <Nav />
-          <h2>Detail</h2>
-          <div class="left-arrow" />
+          <div className="back-button">
+            <a href="/vehicle">
+              <i class="bi bi-arrow-left-circle" />
+            </a>
+            <h3>Back</h3>
+          </div>
           <div class="main-container">
-            <div class="left" />
+            <div class="left">
+              <img src={`${process.env.REACT_APP_HOST}/${this.state.vehicle.image}`} alt="" />
+            </div>
             <div class="right">
               <h1>
-                <strong>Fixie - Gray Only </strong>Yogyakarta
+                <strong>{this.state.vehicle.name}</strong>
+                <br />
+                {this.state.vehicle.location}
               </h1>
               <h3>Available</h3>
               <h4>No Prepayment</h4>
               <ul>
                 <li>Capacity: 1 Person</li>
-                <li>Type: Bike</li>
-                <li>Reservation before 2 PM</li>
+                <li>Type: {this.state.vehicle.category}</li>
+                <li>Description: {this.state.vehicle.description}</li>
               </ul>
-              <h2>Rp. {this.state.price}.000/day</h2>
+              <h2>Rp. {this.state.price}/day</h2>
             </div>
           </div>
           <div class="s-container">
             <div class="second-container">
               <i class="bi bi-chevron-left" />
-              <div class="s-right" />
-              <div class="s-left" />
+              <div class="s-right">
+                <img src={`${process.env.REACT_APP_HOST}/${this.state.vehicle.image}`} alt="" />
+              </div>
+              <div class="s-left">
+                <img src={`${process.env.REACT_APP_HOST}/${this.state.vehicle.image}`} alt="" />
+              </div>
               <i class="bi bi-chevron-right" />
             </div>
             <div class="wraper">
@@ -70,9 +107,11 @@ export default class index extends Component {
             <button type="button" class="btn btn-secondary chat-admin">
               <strong>Chat Admin</strong>
             </button>
-            <button type="button" class="btn btn-warning kuning">
-              <strong>Reservation</strong>
-            </button>
+            <a href="/reservation" className="kuning">
+              <button type="button" class="btn btn-warning kuning">
+                <strong>Reservation</strong>
+              </button>
+            </a>
             <button type="button" class="btn btn-secondary like">
               <i class="bi bi-heart-fill" />
               <strong> Like</strong>

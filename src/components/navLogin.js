@@ -31,6 +31,7 @@ class navLogin extends Component {
 
   LogOut = () => {
     this.props.logout();
+    window.location.reload();
   };
 
   render() {
@@ -53,7 +54,7 @@ class navLogin extends Component {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link " href="/vehicle_type">
+                <a className="nav-link " href="/vehicle">
                   vehicle type
                 </a>
               </li>

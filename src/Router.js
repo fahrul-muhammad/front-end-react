@@ -57,7 +57,7 @@ export default class Router extends Component {
               }}
             />
             <Route
-              path="/vehicle_detail"
+              path="/vehicle/detail/:id"
               render={(routerProps) => {
                 if (!accessToken) return <Redirect from="/vehicle_detail" to="/" />;
                 return <Booking {...routerProps} />;
@@ -70,7 +70,6 @@ export default class Router extends Component {
                 return <EditVehicle {...routerProps} />;
               }}
             />
-            <Route path="/vehicle_type" component={VehicleType} />
             <Route
               path="/chat"
               render={(routerProps) => {
@@ -130,6 +129,7 @@ export default class Router extends Component {
                 return <AddVehicle {...routerProps} />;
               }}
             />
+            <Route path="/vehicle" component={VehicleType} />
             <Route path="*" component={NotFound} />
           </Switch>
         </ReduxProvider>

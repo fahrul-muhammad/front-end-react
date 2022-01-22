@@ -71,13 +71,6 @@ class index extends Component {
       .catch((err) => {
         console.log(err);
       });
-    // const body = {
-    //   email: e.target.email.value,
-    //   address: e.target.address.value,
-    //   phone_number: e.target.phone_number.value,
-    //   name: e.target.name.value,
-    //   DoB: e.target.DoB.valule,
-    // };
   };
 
   handleFile = (event) => {
@@ -85,9 +78,14 @@ class index extends Component {
     event.preventDefault();
   };
 
-  // changeData = (e) => {
-  //   this.onClickSave(e);
-  // };
+  LogoutModal = () => {
+    let myModal = document.getElementById("myModal");
+    let myInput = document.getElementById("myInput");
+
+    myModal.addEventListener("shown.bs.modal", function() {
+      myInput.focus();
+    });
+  };
 
   render() {
     const profilepic = this.props.users.profilepic || defaultImg;
@@ -167,12 +165,24 @@ class index extends Component {
               <button type="button" class="btn btn-warning change" onClick={this.onClickSave}>
                 Save Change
               </button>
-              <button type="button" class="btn btn-secondary edit-btn">
-                <a href="/change_password">Edit Password</a>
+              <button type="button" class="btn btn-secondary edit-btn" onClick={this.LogoutModal} data-bs-toggle="password" data-bs-target="#exampleModal">
+                Edit Password
               </button>
               <button type="button" class="btn btn-light cancel-btn">
                 Cancel
               </button>
+            </div>
+          </div>
+
+          {/* CHANGE PASS MODAL */}
+          <div className="modal password fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-body">Input your Password</div>
+                <div className="modal-footer">
+                  <h1>cancel</h1>
+                </div>
+              </div>
             </div>
           </div>
         </main>
