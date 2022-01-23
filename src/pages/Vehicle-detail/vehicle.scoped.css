@@ -263,8 +263,7 @@ img {
   border-radius: 10px;
 }
 
-.chat-admin:hover,
-.like:hover {
+.chat-admin:hover {
   background-color: #525252;
   color: #ffcd61;
 }
@@ -283,6 +282,20 @@ img {
   background-color: #393939;
   color: #ffcd61;
   border-radius: 10px;
+}
+
+.like button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: #393939;
+  color: #ffcd61;
+  border-radius: 10px;
+}
+
+.like button:hover {
+  background-color: #525252;
+  color: #ffcd61;
 }
 
 .bi-heart-fill {
@@ -522,3 +535,5 @@ img {
     margin-top: 10%;
   }
 }
+
+/* MODAL */

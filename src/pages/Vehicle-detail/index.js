@@ -75,7 +75,7 @@ export default class index extends Component {
               <h3>Available</h3>
               <h4>No Prepayment</h4>
               <ul>
-                <li>Capacity: 1 Person</li>
+                <li>Stock : {this.state.vehicle.stock}</li>
                 <li>Type: {this.state.vehicle.category}</li>
                 <li>Description: {this.state.vehicle.description}</li>
               </ul>
@@ -107,15 +107,16 @@ export default class index extends Component {
             <button type="button" class="btn btn-secondary chat-admin">
               <strong>Chat Admin</strong>
             </button>
-            <a href="/reservation" className="kuning">
+            <a href={`/reservation/${this.state.vehicle.id}`} className="kuning">
               <button type="button" class="btn btn-warning kuning">
                 <strong>Reservation</strong>
               </button>
             </a>
-            <button type="button" class="btn btn-secondary like">
-              <i class="bi bi-heart-fill" />
-              <strong> Like</strong>
-            </button>
+            <a href={`/vehicle/edit/${this.state.vehicle.id}`} className="like">
+              <button type="button" class="btn btn-secondary">
+                <strong> Edit</strong>
+              </button>
+            </a>
           </div>
           <Footer />
         </div>

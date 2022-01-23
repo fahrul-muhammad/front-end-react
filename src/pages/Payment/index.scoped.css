@@ -25,35 +25,44 @@
 .jumbotron {
   width: 100%;
   height: 58.579088471849865vh;
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/src/img/sepeda-keren-min.jpg);
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  color: white;
+  object-fit: cover;
+  color: rgb(143, 143, 143);
   margin-bottom: 3%;
+  position: relative;
 }
 
 .jumbotron img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .jumbo-tittle {
-  margin-left: 5%;
-  margin-bottom: 5%;
+  top: 0%;
+  left: 5%;
   width: max-content;
+  position: absolute;
+  z-index: 1;
 }
 
 .jumbo-tittle p {
-  color: white;
   font-family: "Playfair Display";
   font-size: 3.125vw;
+  color: rgb(255, 255, 255);
+  text-shadow: 4px 3px 0 #7a7a7a;
+}
+
+.jumbo-tittle h4 {
+  color: rgb(255, 255, 255);
+  text-shadow: 4px 3px 0 #7a7a7a;
 }
 
 .button-container {
+  position: absolute;
+  bottom: 10%;
+  left: 30%;
   width: max-content;
-  margin: auto;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }

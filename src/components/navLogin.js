@@ -6,8 +6,6 @@ import { bindActionCreators } from "redux";
 import { logout } from "../redux/actions/test";
 import defaultImg from "../img/dummy-profile.png";
 
-// import profile from "../img/profilepic-min.png";
-
 class navLogin extends Component {
   constructor(props) {
     super(props);
@@ -36,7 +34,7 @@ class navLogin extends Component {
 
   render() {
     console.log(this.props);
-    const profilepic = this.props.users.profilepic || defaultImg;
+    const profilepic = this.props.users.profilepic;
     return (
       <nav className="navbar navbar-expand-sm navbar-light bg-light log-nav">
         <div className="container-fluid me-2">
@@ -77,8 +75,7 @@ class navLogin extends Component {
           </a>
           <div className="profile-img">
             <div className="btn-group dropstart ">
-              {/* <img src={"http://localhost:8000" + this.state.profilepic} alt="" /> */}
-              <img src={process.env.REACT_APP_HOST + profilepic || defaultImg} alt="" />
+              <img src={profilepic ? process.env.REACT_APP_HOST + profilepic : defaultImg} alt="" />
               <button type="button" className="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" />
               <ul className="dropdown-menu ">
                 <li>

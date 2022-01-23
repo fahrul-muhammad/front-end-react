@@ -21,6 +21,7 @@ class index extends Component {
       location: "",
       stock: 1,
       description: "",
+      result: [],
     };
     this.inputFile = React.createRef();
   }
@@ -69,16 +70,21 @@ class index extends Component {
       headers: { "content-type": "multipart/form-data" },
     })
       .then((res) => {
-        console.log(res);
+        this.setState({ result: res.data.result.id });
+        this.props.history.push(`/vehicle/detail/${this.state.result}`);
       })
       .catch((err) => {
-        console.log(err);
+        this.errResponse();
       });
   };
 
-  // componentDidMount() {
-  //   console.log(this.state);
-  // }
+  errResponse() {
+    var x = document.getElementById("toast");
+    x.className = "show";
+    setTimeout(function() {
+      x.className = x.className.replace("show", "");
+    }, 3000);
+  }
 
   onClickPlus = () => {
     const number = this.state.stock;
@@ -151,7 +157,7 @@ class index extends Component {
           <div className="left-button">
             <div className="dropdown-sort">
               <select class="form-select" name="category" aria-label="Default select example" onChange={this.formChange}>
-                {/* <option selected>Add Item To</option> */}
+                <option selected>Add Item To</option>
                 <option value="1">Car</option>
                 <option value="2">Motorbike</option>
                 <option value="3">Bike</option>
@@ -165,6 +171,20 @@ class index extends Component {
             </button>
           </div>
         </div>
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-body">
+            Hello, world! This is a toast message.
+            <div class="mt-2 pt-2 border-top">
+              <button type="button" class="btn btn-primary btn-sm">
+                Take action
+              </button>
+              <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="toast">Terjadi Kesalahan, Silahkan Coba lagi</div>
         <Footer />
       </>
     );

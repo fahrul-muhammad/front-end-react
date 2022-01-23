@@ -88,7 +88,7 @@ class index extends Component {
   };
 
   render() {
-    const profilepic = this.props.users.profilepic || defaultImg;
+    const profilepic = this.props.users.profilepic;
     return (
       <main>
         <Navbar />
@@ -96,7 +96,7 @@ class index extends Component {
           <h3>Profile</h3>
           <div class="card">
             <div class="profile-pic">
-              <img src={process.env.REACT_APP_HOST + profilepic || defaultImg} alt="profilepic" />
+              <img src={profilepic ? process.env.REACT_APP_HOST + profilepic : defaultImg} alt="profilepic" />
               <div class="edit">
                 <input type="file" name="profilepic" hidden onChange={this.fileChange} ref={this.inputFile} />
                 <button className="edit-profile" onClick={this.handleFile} />

@@ -167,12 +167,12 @@ class index extends Component {
           </div>
         </div>
         {this.state.searchResult.length > 0 ? (
-          this.state.searchResult.map((val) => {
-            return <Search image={val.Image} name={val.Vehicle_Name} location={val.location} type={val.Category} link={val.id} price={val.Price} />;
-          })
-        ) : (
-          <h1 className="not-found">keyword not found, try another</h1>
-        )}
+          <div className="wrapper">
+            {this.state.searchResult.map((val) => {
+              return <Search image={val.Image} name={val.Vehicle_Name} location={val.location} type={val.Category} link={val.id} price={val.Price} />;
+            })}
+          </div>
+        ) : null}
         <div className="paginasi-container">
           <button type="button" class="btn btn-warning" onClick={this.prevPage}>
             Previous
@@ -189,30 +189,39 @@ class index extends Component {
             <Popular />
           </div>
         </div>
-        <div class="car">
-          <h1>Cars</h1>
-          <div class="cards-containers">
-            {this.state.car.map((val) => {
-              return <Card isShown={true} id={val.id} image={`${process.env.REACT_APP_HOST}/${val.photos}`} name={val.Vehicle_Name} city={val.lokasi} />;
-            })}
+        {this.state.car.length > 0 ? (
+          <div class="car">
+            <h1>Cars</h1>
+            <div class="cards-containers">
+              {this.state.car.map((val) => {
+                return <Card isShown={true} id={val.id} image={`${process.env.REACT_APP_HOST}/${val.photos}`} name={val.Vehicle_Name} city={val.lokasi} />;
+              })}
+            </div>
           </div>
-        </div>
-        <div class="motor">
-          <h1>Motorbike</h1>
-          <div class="cards-containers">
-            {this.state.motor.map((val) => {
-              return <Card isShown={true} id={val.id} image={`${process.env.REACT_APP_HOST}/${val.photos}`} name={val.Vehicle_Name} city={val.lokasi} />;
-            })}
+        ) : null}
+
+        {this.state.motor.length > 0 ? (
+          <div class="motor">
+            <h1>Motorbike</h1>
+            <div class="cards-containers">
+              {this.state.motor.map((val) => {
+                return <Card isShown={true} id={val.id} image={`${process.env.REACT_APP_HOST}/${val.photos}`} name={val.Vehicle_Name} city={val.lokasi} />;
+              })}
+            </div>
           </div>
-        </div>
-        <div class="bike">
-          <h1>Bike</h1>
-          <div class="cards-containers">
-            {this.state.bike.map((val) => {
-              return <Card isShown={true} id={val.id} image={`${process.env.REACT_APP_HOST}/${val.photos}`} name={val.Vehicle_Name} city={val.lokasi} />;
-            })}
+        ) : null}
+
+        {this.state.bike.length > 0 ? (
+          <div class="bike">
+            <h1>Bike</h1>
+            <div class="cards-containers">
+              {this.state.bike.map((val) => {
+                return <Card isShown={true} id={val.id} image={`${process.env.REACT_APP_HOST}/${val.photos}`} name={val.Vehicle_Name} city={val.lokasi} />;
+              })}
+            </div>
           </div>
-        </div>
+        ) : null}
+
         <div id="snackbar">Vehicle Not Found</div>
         <Footer />
       </main>

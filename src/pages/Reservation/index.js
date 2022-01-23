@@ -1,21 +1,41 @@
 import React, { Component } from "react";
 import "./index.scoped.css";
+import axios from "axios";
 
 // component
 import Navbar from "../../components/navLogin";
 import Footer from "../../components/footerTemp";
+import { connect } from "react-redux";
 
-// image
-import fixie from "../../img/sepeda-keren-min.jpg";
-
-export default class index extends Component {
+class index extends Component {
   constructor() {
     super();
     this.state = {
       counter: 1,
       price: 89,
+      result: [],
     };
   }
+
+  getVehicle = () => {
+    const URL = `${process.env.REACT_APP_HOST}/vehicle/detail/${this.props.match.params.id}`;
+    const token = this.props.token;
+    console.log(token);
+    axios({
+      method: "GET",
+      url: URL,
+      headers: { token },
+    })
+      .then((res) => {
+        console.log(res.data.result.result);
+        const data = res.data.result.result[0];
+        this.setState({ result: data });
+        console.log(this.state.result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   onclickPlus = () => {
     const number = this.state.counter;
@@ -35,25 +55,29 @@ export default class index extends Component {
     }
   };
 
+  componentDidMount() {
+    this.getVehicle();
+  }
+
   render() {
     return (
       <div>
         <Navbar />
         <div className="back-button">
-          <a href="/#">
+          <a href={`/vehicle/detail/${this.state.result.id}`}>
             <i class="bi bi-arrow-left-circle" />
           </a>
           <h3>Reservation</h3>
         </div>
         <div className="main-container">
           <div className="left">
-            <img src={fixie} alt="" />
+            <img src={`${process.env.REACT_APP_HOST}/${this.state.result.image}`} alt="" />
           </div>
           <div className="right">
             <h2>
-              <strong>Fixie - Gray Only</strong>
+              <strong>{this.state.result.name}</strong>
             </h2>
-            <h4>Yogyakarta</h4>
+            <h4>{this.state.result.location}</h4>
             <p>No prepayment</p>
             <div className="counter">
               <button type="button" class="btn btn-light minus" onClick={this.onclickMinus}>
@@ -66,15 +90,15 @@ export default class index extends Component {
             </div>
             <div className="forms">
               <p>Reservation Date :</p>
-              <input class="form-control" type="text" placeholder="Select Date" aria-label="default input example" />
+              <input class="form-control" type="text" placeholder="Example : Des 10 to 18 12 2021" aria-label="default input example" />
               <input type="date" class="form-control" placeholder="23/06/2003" aria-label="DD/MM/YYYY" />
             </div>
           </div>
         </div>
         <div className="reservation-button">
-          <a href="/payment">
+          <a href={`/payment/${this.state.result.id}`}>
             <button type="button" class="btn btn-warning">
-              <p>Pay Now : Rp {this.state.price}.000</p>
+              <p>Pay Now : Rp {this.state.result.price}</p>
             </button>
           </a>
         </div>
@@ -83,3 +107,12 @@ export default class index extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    users: state.auth.userData,
+    token: state.auth.token,
+  };
+};
+
+export default connect(mapStateToProps)(index);

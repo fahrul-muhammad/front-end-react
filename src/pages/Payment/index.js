@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./index.scoped.css";
 import { connect } from "react-redux";
+import axios from "axios";
 
 // component
 import Header from "../../components/navLogin";
@@ -11,31 +12,52 @@ class index extends Component {
     super(props);
     this.state = {
       users: {},
+      result: [],
     };
   }
 
+  getVehicle = () => {
+    const URL = `${process.env.REACT_APP_HOST}/vehicle/detail/${this.props.match.params.id}`;
+    const token = this.props.token;
+    console.log(token);
+    axios({
+      method: "GET",
+      url: URL,
+      headers: { token },
+    })
+      .then((res) => {
+        console.log(res.data.result.result);
+        const data = res.data.result.result[0];
+        this.setState({ result: data });
+        console.log(this.state.result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   componentDidMount() {
+    this.getVehicle();
     this.setState({ users: this.props.users });
   }
 
   render() {
-    console.log("USERS DATA", this.state.users);
     return (
       <main>
         <Header />
         <div className="back-button">
-          <a href="/reservation">
+          <a href={`/reservation/${this.state.result.id}`}>
             <i class="bi bi-arrow-left-circle" />
           </a>
           <h3>Payment</h3>
         </div>
         <div className="jumbotron">
-          {/* <img src={vehicle} alt="vehicle" /> */}
+          <img src={`${process.env.REACT_APP_HOST}/${this.state.result.image}`} alt="vehicle" />
           <div className="jumbo-tittle">
             <p>
-              <strong>Fixie - Gray only</strong>
+              <strong>{this.state.result.name}</strong>
               <br />
-              Yogyakarta
+              {this.state.result.location}
             </p>
             <h4> No Prepayment </h4>
           </div>
@@ -68,7 +90,7 @@ class index extends Component {
         <div className="detail-order">
           <p>DETAIL ORDER</p>
           <div className="f-left">
-            <p>Quantity : 2 bikes</p>
+            <p>Quantity : {this.state.result.stock}</p>
           </div>
           <div className="f-right">
             <p>
@@ -79,8 +101,12 @@ class index extends Component {
           <div className="s-left">
             <p>Price Details : </p>
             <ul>
-              <li>1 bike : Rp. 78.000 </li>
-              <li>1 bike : Rp. 78.000</li>
+              <li>
+                1 {this.state.result.category} : Rp. {this.state.result.price}{" "}
+              </li>
+              <li>
+                1 {this.state.result.category} : Rp. {this.state.result.price}
+              </li>
             </ul>
           </div>
           <div className="s-right">
@@ -122,6 +148,7 @@ class index extends Component {
 const mapStateToProps = (state) => {
   return {
     users: state.auth.userData,
+    token: state.auth.token,
   };
 };
 
