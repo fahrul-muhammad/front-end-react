@@ -5,8 +5,13 @@ import axios from "axios";
 import FormData from "form-data";
 import defaultImg from "../../img/dummy-profile.png";
 
+// bootstrap
+import { Modal } from "react-bootstrap";
+
 // redux
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { loginAction, saveAction } from "../../redux/actions/test";
 
 import React, { Component } from "react";
 
@@ -21,6 +26,8 @@ class index extends Component {
       DoB: 0,
       address: "",
       profilepic: "",
+      show: false,
+      newPassword: "",
     };
     this.inputFile = React.createRef();
   }
@@ -44,13 +51,27 @@ class index extends Component {
 
   _setData = () => {
     const forms = new FormData();
-    forms.append("name", this.state.name);
-    forms.append("email", this.state.email);
-    forms.append("gender", this.state.gender);
-    forms.append("phone_number", this.state.phone_number);
-    forms.append("DoB", this.state.DoB);
-    forms.append("address", this.state.address);
-    forms.append("profilepic", this.state.profilepic);
+    if (this.state.name !== "") {
+      forms.append("name", this.state.name);
+    }
+    if (this.state.email !== "") {
+      forms.append("email", this.state.email);
+    }
+    if (this.state.gender !== "") {
+      forms.append("gender", this.state.gender);
+    }
+    if (this.state.phone_number !== 0) {
+      forms.append("phone_number", this.state.phone_number);
+    }
+    if (this.state.DoB !== 0) {
+      forms.append("DoB", this.state.DoB);
+    }
+    if (this.state.address !== "") {
+      forms.append("address", this.state.address);
+    }
+    if (this.state.profilepic !== "") {
+      forms.append("profilepic", this.state.profilepic);
+    }
     return forms;
   };
 
@@ -58,7 +79,7 @@ class index extends Component {
     const URL = process.env.REACT_APP_HOST + "/users";
     const forms = this._setData();
     const token = this.props.token;
-    // console.log(body);
+    console.log(this.state);
     axios({
       url: URL,
       method: "PATCH",
@@ -66,7 +87,39 @@ class index extends Component {
       headers: { token, "content-type": "multipart/form-data" },
     })
       .then((res) => {
+        const token = this.props.token;
+        this.getUsers(token);
         console.log(res);
+        var x = document.getElementById("snackbar");
+        x.className = "show";
+        setTimeout(function() {
+          x.className = x.className.replace("show", "");
+        }, 3000);
+      })
+      .catch((err) => {
+        console.log(err);
+        var x = document.getElementById("toast");
+        x.className = "show";
+        setTimeout(function() {
+          x.className = x.className.replace("show", "");
+        }, 3000);
+      });
+  };
+
+  cancel = () => {
+    this.setState({ name: "", email: "", gender: "", phone_number: 0, DoB: 0, address: "", profilepic: "" });
+  };
+
+  getUsers = (token) => {
+    axios({
+      url: process.env.REACT_APP_HOST + "/users/profile",
+      method: "GET",
+      headers: { token },
+    })
+      .then((res) => {
+        const { result } = res.data.result;
+        console.log(result);
+        this.props.setUsers(result[0]);
       })
       .catch((err) => {
         console.log(err);
@@ -78,13 +131,41 @@ class index extends Component {
     event.preventDefault();
   };
 
-  LogoutModal = () => {
-    let myModal = document.getElementById("myModal");
-    let myInput = document.getElementById("myInput");
+  ModalTriger = () => {
+    this.setState({ show: !this.state.show });
+  };
 
-    myModal.addEventListener("shown.bs.modal", function() {
-      myInput.focus();
-    });
+  changePass = () => {
+    const URL = `${process.env.REACT_APP_HOST}/users/changePass`;
+    const email = this.state.email;
+    const newPassword = this.state.newPassword;
+    console.log("NEW PASSWORD STATE", newPassword);
+    console.log("NEW EMAIL STATE", email);
+    axios({
+      method: "PATCH",
+      url: URL,
+      data: { email, newPassword },
+    })
+      .then((res) => {
+        this.setState({ show: !this.state.show });
+        var x = document.getElementById("snackbar");
+        x.className = "show";
+        setTimeout(function() {
+          x.className = x.className.replace("show", "");
+        }, 3000);
+      })
+      .catch((err) => {
+        this.setState({ show: !this.state.show });
+        var x = document.getElementById("toast");
+        x.className = "show";
+        setTimeout(function() {
+          x.className = x.className.replace("show", "");
+        }, 3000);
+      });
+  };
+
+  doEditPassword = () => {
+    this.changePass();
   };
 
   render() {
@@ -165,7 +246,7 @@ class index extends Component {
               <button type="button" class="btn btn-warning change" onClick={this.onClickSave}>
                 Save Change
               </button>
-              <button type="button" class="btn btn-secondary edit-btn" onClick={this.LogoutModal} data-bs-toggle="password" data-bs-target="#exampleModal">
+              <button type="button" class="btn btn-secondary edit-btn" onClick={this.ModalTriger} data-bs-toggle="password" data-bs-target="#exampleModal">
                 Edit Password
               </button>
               <button type="button" class="btn btn-light cancel-btn">
@@ -173,20 +254,41 @@ class index extends Component {
               </button>
             </div>
           </div>
-
           {/* CHANGE PASS MODAL */}
-          <div className="modal password fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-body">Input your Password</div>
-                <div className="modal-footer">
-                  <h1>cancel</h1>
+          <div className="modal-container">
+            <Modal show={this.state.show} className="modal">
+              <Modal.Body className="modal-body" />
+              <p className="tittle">EDIT PASSWORD</p>
+              <form>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">
+                    Email address
+                  </label>
+                  <input type="email" class="form-control" aria-describedby="emailHelp" name="email" onChange={this.formChange} />
                 </div>
-              </div>
-            </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">
+                    New Password
+                  </label>
+                  <input type="password" name="newPassword" class="form-control" onChange={this.formChange} />
+                </div>
+              </form>
+              <Modal.Footer className="footer">
+                <button type="button" class="btn btn-secondary left-btn" onClick={this.ModalTriger}>
+                  Cancel
+                </button>
+                <div className="kosong">1</div>
+                <button type="button" class="btn btn-warning right-btn" onClick={this.doEditPassword}>
+                  Submit
+                </button>
+              </Modal.Footer>
+            </Modal>
           </div>
         </main>
         <Footer />
+        {/* toast / snackbar */}
+        <div id="snackbar">berhasil mengubah data</div>
+        <div id="toast">gagal mengubah data</div>
       </main>
     );
   }
@@ -199,4 +301,14 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(index);
+const mapDispatchToPropps = (dispacth) => {
+  return {
+    setUsers: bindActionCreators(saveAction, dispacth),
+    setAuth: bindActionCreators(loginAction, dispacth),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToPropps
+)(index);

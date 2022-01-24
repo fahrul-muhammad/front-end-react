@@ -26,9 +26,9 @@
   visibility: hidden;
   min-width: 250px;
   margin-left: -125px;
-  background-color: rgb(252, 252, 252) !important;
+  background-color: rgba(57, 57, 57, 1) !important;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  color: rgb(255, 0, 0);
+  color: rgba(255, 205, 97, 1) !important;
   font-weight: 700;
   text-align: center;
   border-radius: 2px;
