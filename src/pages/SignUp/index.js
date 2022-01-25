@@ -21,7 +21,7 @@ export default class index extends Component {
 
   signup = () => {
     console.log(this.state);
-    const URL = "http://localhost:8000/auth/signup";
+    const URL = process.env.REACT_APP_HOST + "/auth/signup";
     axios({
       method: "POST",
       url: URL,
