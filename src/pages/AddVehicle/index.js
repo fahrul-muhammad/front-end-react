@@ -103,7 +103,7 @@ class index extends Component {
     return (
       <>
         <Header />
-        <a href="/vehicle_type" className="back-button">
+        <a href="/vehicle" className="back-button">
           <i class="bi bi-arrow-left-circle" />
           <h3>Add New Item</h3>
         </a>
