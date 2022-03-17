@@ -17,9 +17,9 @@ export default function history_card(props) {
           Rating : <strong>{props.rating}</strong>{" "}
         </p>
         <p className="price">
-          <strong>Prepayment : Rp. {props.price} </strong>
+          <strong>Prepayment : {props.price} </strong>
         </p>
-        <p className="status">
+        <p className={props.isBack ? "status-success" : "status-not"}>
           {" "}
           <strong>{props.status}</strong>{" "}
         </p>

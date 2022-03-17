@@ -40,11 +40,20 @@
   font-family: "Nunito";
 }
 
-.card-history .status {
+.card-history .status-success {
   position: absolute;
   bottom: 0%;
   left: 25%;
   color: green;
+  font-size: 1.171875vw;
+  font-family: "Nunito";
+}
+
+.card-history .status-not {
+  position: absolute;
+  bottom: 0%;
+  left: 25%;
+  color: red;
   font-size: 1.171875vw;
   font-family: "Nunito";
 }

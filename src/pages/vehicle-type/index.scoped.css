@@ -113,6 +113,7 @@ input:focus {
   height: 80vh;
   width: 90%;
   margin: 2% auto 3.5% auto;
+  position: relative;
 }
 
 .cards-containers {
@@ -140,6 +141,7 @@ input:focus {
   height: 80vh;
   width: 90%;
   margin: 2% auto 3.5% auto;
+  position: relative;
 }
 
 .motor h1 {
@@ -161,6 +163,7 @@ input:focus {
   height: 80vh;
   width: 90%;
   margin: 2% auto 3.5% auto;
+  position: relative;
 }
 
 .bike h1 {
@@ -302,4 +305,15 @@ input:focus {
   padding-top: 2%;
   padding-bottom: 5%;
   text-align: center;
+}
+
+.viewall {
+  position: absolute;
+  top: 0;
+  right: 0%;
+  font-size: 4.5vh !important;
+}
+
+.viewall:hover {
+  cursor: pointer;
 }

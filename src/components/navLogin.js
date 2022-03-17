@@ -21,7 +21,6 @@ class navLogin extends Component {
   LogoutModal = () => {
     let myModal = document.getElementById("myModal");
     let myInput = document.getElementById("myInput");
-
     myModal.addEventListener("shown.bs.modal", function() {
       myInput.focus();
     });
@@ -75,7 +74,7 @@ class navLogin extends Component {
           </a>
           <div className="profile-img">
             <div className="btn-group dropstart ">
-              <img src={profilepic ? process.env.REACT_APP_HOST + profilepic : defaultImg} alt="" />
+              <img src={profilepic ? process.env.REACT_APP_HOST + profilepic : defaultImg} alt="profilepic" />
               <button type="button" className="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" />
               <ul className="dropdown-menu ">
                 <li>

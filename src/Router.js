@@ -17,6 +17,7 @@ import ChangePass from "./pages/Change-pass";
 import AddVehicle from "./pages/AddVehicle";
 import SecReservation from "./pages/Reservation/secondRev";
 import EditVehicle from "./pages/EditVehicle";
+import VehicleCategory from "./pages/vehicle-category";
 
 import React, { Component } from "react";
 import { Provider as ReduxProvider } from "react-redux";
@@ -24,11 +25,7 @@ import store from "./redux/store";
 
 export default class Router extends Component {
   render() {
-    // const data = localStorage.getItem("state");
     const state = JSON.parse(localStorage.getItem("state"));
-
-    // const role_id = state.auth.userData.role_id || null;
-    // console.log(role_id);
     const accessToken = state ? state.auth.token : null;
     return (
       <BrowserRouter>
@@ -127,6 +124,13 @@ export default class Router extends Component {
                   return <Redirect from="/add_vehicle" to="/" />;
                 }
                 return <AddVehicle {...routerProps} />;
+              }}
+            />
+            <Route
+              path="/vehicle/:category"
+              render={(routerProps) => {
+                if (!accessToken) return <Redirect from="/vehicle/:category" to="/" />;
+                return <VehicleCategory {...routerProps} />;
               }}
             />
             <Route path="/vehicle" component={VehicleType} />

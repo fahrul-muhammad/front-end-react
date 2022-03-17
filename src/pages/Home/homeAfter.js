@@ -29,7 +29,7 @@ class homeAfter extends Component {
   isOwner = () => {
     const { role_id } = this.props.auth;
     console.log(role_id);
-    if (role_id === 2) {
+    if (role_id === 3) {
       this.setState({ isOwner: true });
     } else {
       this.setState({ isOwner: false });

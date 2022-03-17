@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { loginAction, saveAction } from "../../redux/actions/test";
 import axios from "axios";
-// import { login } from "../../utils/http/auth";
+import Loading from "../../animation/Loading/index";
 
 class index extends Component {
   constructor(props) {
@@ -14,6 +14,7 @@ class index extends Component {
     this.state = {
       email: "",
       password: "",
+      isLoading: false,
     };
   }
 
@@ -33,14 +34,17 @@ class index extends Component {
         const { result } = res.data.result;
         console.log(result);
         this.props.setUsers(result[0]);
+        this.setState({ isLoading: false });
         this.props.history.push("/");
       })
       .catch((err) => {
         console.log(err);
+        this.setState({ isLoading: false });
       });
   };
 
   onSubmitHandler = () => {
+    this.setState({ isLoading: true });
     axios({
       url: process.env.REACT_APP_HOST + "/auth",
       method: "POST",
@@ -52,6 +56,7 @@ class index extends Component {
         this.getUsers(token);
       })
       .catch((err) => {
+        this.setState({ isLoading: false });
         console.log("Gagal");
         let x = document.getElementById("snackbar");
         x.className = "show";
@@ -63,59 +68,65 @@ class index extends Component {
 
   render() {
     return (
-      <section className="main-container">
-        <div className="left-container" />
-        <div className="right-container">
-          <h1>Login.</h1>
-          <div className="form-container">
-            <div className="form-group row">
-              <div className="col-sm-8 offset-2 input">
-                <div className="col-sm-12  input">
-                  <input className="form-control email" name="email" id="ex1" type="email" placeholder="email" onChange={this.formChange} />
-                  <input className="form-control password" name="password" id="ex1" type="password" placeholder="password" onChange={this.formChange} />
+      <>
+        {this.state.isLoading ? (
+          <Loading />
+        ) : (
+          <section className="main-container">
+            <div className="left-container" />
+            <div className="right-container">
+              <h1>Login.</h1>
+              <div className="form-container">
+                <div className="form-group row">
+                  <div className="col-sm-8 offset-2 input">
+                    <div className="col-sm-12  input">
+                      <input className="form-control email" name="email" id="ex1" type="email" placeholder="email" onChange={this.formChange} />
+                      <input className="form-control password" name="password" id="ex1" type="password" placeholder="password" onChange={this.formChange} />
+                    </div>
+                    <button type="button" className="btn btn-warning col-sm-12 fw-bold login" onClick={this.onSubmitHandler}>
+                      Login
+                    </button>
+                    <h4>
+                      <a href="/forgot_password">
+                        <u> forgot password? </u>
+                      </a>
+                    </h4>
+                    <div className="text-center mid-text">
+                      <hr className="first" />
+                      <hr className="second" />
+                      <h3>to try another way</h3>
+                    </div>
+                    <a href="../Home/homeAfter.js">
+                      <button type="button" className="btn btn-light col-sm-12 fw-bold">
+                        <img src={googleIcon} alt="google icon" /> Login With Google
+                      </button>
+                    </a>
+                    <a href="/signup">
+                      <button type="button" className="btn btn-dark text-warning col-sm-12 fw-bold signup">
+                        Sign Up
+                      </button>
+                    </a>
+                  </div>
                 </div>
-                <button type="button" className="btn btn-warning col-sm-12 fw-bold login" onClick={this.onSubmitHandler}>
-                  Login
-                </button>
-                <h4>
-                  <a href="/forgot_password">
-                    <u> forgot password? </u>
-                  </a>
-                </h4>
-                <div className="text-center mid-text">
-                  <hr className="first" />
-                  <hr className="second" />
-                  <h3>to try another way</h3>
-                </div>
-                <a href="../Home/homeAfter.js">
-                  <button type="button" className="btn btn-light col-sm-12 fw-bold">
-                    <img src={googleIcon} alt="google icon" /> Login With Google
-                  </button>
-                </a>
-                <a href="/signup">
-                  <button type="button" className="btn btn-dark text-warning col-sm-12 fw-bold signup">
-                    Sign Up
-                  </button>
-                </a>
               </div>
+              <footer className="login-footer-container">
+                <div className="logo-footer" />
+                <h3>Plan and book your perfect trip with expert advice, travel tips for vehicle information from us</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur facere amet distinctio in dignissimos libero!</p>
+                <hr />
+                <div className="icon">
+                  <i className="fa fa-twitter" aria-hidden="true" />
+                  <i className="fa fa-facebook" aria-hidden="true" />
+                  <i className="fa fa-instagram" aria-hidden="true" />
+                  <i className="fa fa-linkedin" aria-hidden="true" />
+                  <i className="fa fa-youtube-play" aria-hidden="true" />
+                </div>
+              </footer>
             </div>
-          </div>
-          <footer className="login-footer-container">
-            <div className="logo-footer" />
-            <h3>Plan and book your perfect trip with expert advice, travel tips for vehicle information from us</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur facere amet distinctio in dignissimos libero!</p>
-            <hr />
-            <div className="icon">
-              <i className="fa fa-twitter" aria-hidden="true" />
-              <i className="fa fa-facebook" aria-hidden="true" />
-              <i className="fa fa-instagram" aria-hidden="true" />
-              <i className="fa fa-linkedin" aria-hidden="true" />
-              <i className="fa fa-youtube-play" aria-hidden="true" />
-            </div>
-          </footer>
-        </div>
-        <div id="snackbar">Password atau email salah</div>
-      </section>
+            <div id="snackbar">Password atau email salah</div>
+          </section>
+        )}
+      </>
     );
   }
 }

@@ -135,7 +135,7 @@ class index extends Component {
   }
 
   render() {
-    console.log(this.state.searchResult);
+    console.log(this.props.history);
     return (
       <main>
         {!this.state.isLogin ? <NavLogin /> : <Navbar />}
@@ -173,7 +173,7 @@ class index extends Component {
             })}
           </div>
         ) : null}
-        <div className="paginasi-container">
+        {/* <div className="paginasi-container">
           <button type="button" class="btn btn-warning" onClick={this.prevPage}>
             Previous
           </button>
@@ -181,7 +181,7 @@ class index extends Component {
           <button type="button" class="btn btn-warning" onClick={this.nextPage}>
             Next
           </button>
-        </div>
+        </div> */}
 
         <div className="popular-container">
           <h1>Popular in Town</h1>
@@ -192,6 +192,14 @@ class index extends Component {
         {this.state.car.length > 0 ? (
           <div class="car">
             <h1>Cars</h1>
+            <h1
+              className="viewall"
+              onClick={() => {
+                this.props.history.push("/vehicle/car?page=1&limit=8&order=DESC&sorting=id");
+              }}
+            >
+              View All
+            </h1>
             <div class="cards-containers">
               {this.state.car.map((val) => {
                 return <Card isShown={true} id={val.id} image={`${process.env.REACT_APP_HOST}/${val.photos}`} name={val.Vehicle_Name} city={val.lokasi} />;
@@ -203,6 +211,14 @@ class index extends Component {
         {this.state.motor.length > 0 ? (
           <div class="motor">
             <h1>Motorbike</h1>
+            <h1
+              className="viewall"
+              onClick={() => {
+                this.props.history.push("/vehicle/motorbike?page=1&limit=8&order=DESC&sorting=id");
+              }}
+            >
+              View All
+            </h1>
             <div class="cards-containers">
               {this.state.motor.map((val) => {
                 return <Card isShown={true} id={val.id} image={`${process.env.REACT_APP_HOST}/${val.photos}`} name={val.Vehicle_Name} city={val.lokasi} />;
@@ -214,6 +230,14 @@ class index extends Component {
         {this.state.bike.length > 0 ? (
           <div class="bike">
             <h1>Bike</h1>
+            <h1
+              className="viewall"
+              onClick={() => {
+                this.props.history.push("/vehicle/bike?page=1&limit=8&order=DESC&sorting=id");
+              }}
+            >
+              View All
+            </h1>
             <div class="cards-containers">
               {this.state.bike.map((val) => {
                 return <Card isShown={true} id={val.id} image={`${process.env.REACT_APP_HOST}/${val.photos}`} name={val.Vehicle_Name} city={val.lokasi} />;
