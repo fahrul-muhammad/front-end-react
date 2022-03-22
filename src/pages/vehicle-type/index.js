@@ -10,6 +10,7 @@ import Popular from "../../components/popularVehc";
 import Card from "../../components/Card";
 import Footer from "../../components/footerTemp";
 import Search from "../../components/search";
+import Loading from "../../animation/Loading";
 
 class index extends Component {
   constructor(props, keyword) {
@@ -137,43 +138,47 @@ class index extends Component {
   render() {
     console.log(this.props.history);
     return (
-      <main>
-        {!this.state.isLogin ? <NavLogin /> : <Navbar />}
-        <div className="search-container">
-          <div class="row height d-flex justify-content-center align-items-center">
-            <div class="col-md-11">
-              <div class="form">
-                <i class="fa fa-search" />
-                <input
-                  type="text"
-                  class="form-control form-input"
-                  placeholder="Search anything..."
-                  name="search"
-                  onChange={(e) => {
-                    this.setState({ search: e.target.value });
-                  }}
-                  onKeyDown={this._handleKeyDown}
-                />
-                <span class="left-pan">
-                  <i class="fa fa-microphone" />
-                </span>{" "}
+      <>
+        {this.state.car.length < 1 || this.state.bike.length < 1 || this.state.bike.length < 1 ? (
+          <Loading />
+        ) : (
+          <main>
+            {!this.state.isLogin ? <NavLogin /> : <Navbar />}
+            <div className="search-container">
+              <div class="row height d-flex justify-content-center align-items-center">
+                <div class="col-md-11">
+                  <div class="form">
+                    <i class="fa fa-search" />
+                    <input
+                      type="text"
+                      class="form-control form-input"
+                      placeholder="Search anything..."
+                      name="search"
+                      onChange={(e) => {
+                        this.setState({ search: e.target.value });
+                      }}
+                      onKeyDown={this._handleKeyDown}
+                    />
+                    <span class="left-pan">
+                      <i class="fa fa-microphone" />
+                    </span>{" "}
+                  </div>
+                </div>
+              </div>
+              <div className="button-search">
+                <button type="button" class="btn btn-warning" onClick={this.cancel}>
+                  Cancel
+                </button>
               </div>
             </div>
-          </div>
-          <div className="button-search">
-            <button type="button" class="btn btn-warning" onClick={this.cancel}>
-              Cancel
-            </button>
-          </div>
-        </div>
-        {this.state.searchResult.length > 0 ? (
-          <div className="wrapper">
-            {this.state.searchResult.map((val) => {
-              return <Search image={val.Image} name={val.Vehicle_Name} location={val.location} type={val.Category} link={val.id} price={val.Price} />;
-            })}
-          </div>
-        ) : null}
-        {/* <div className="paginasi-container">
+            {this.state.searchResult.length > 0 ? (
+              <div className="wrapper">
+                {this.state.searchResult.map((val) => {
+                  return <Search image={val.Image} name={val.Vehicle_Name} location={val.location} type={val.Category} link={val.id} price={val.Price} />;
+                })}
+              </div>
+            ) : null}
+            {/* <div className="paginasi-container">
           <button type="button" class="btn btn-warning" onClick={this.prevPage}>
             Previous
           </button>
@@ -183,72 +188,74 @@ class index extends Component {
           </button>
         </div> */}
 
-        <div className="popular-container">
-          <h1>Popular in Town</h1>
-          <div className="popular">
-            <Popular />
-          </div>
-        </div>
-        {this.state.car.length > 0 ? (
-          <div class="car">
-            <h1>Cars</h1>
-            <h1
-              className="viewall"
-              onClick={() => {
-                this.props.history.push("/vehicle/car?page=1&limit=8&order=DESC&sorting=id");
-              }}
-            >
-              View All
-            </h1>
-            <div class="cards-containers">
-              {this.state.car.map((val) => {
-                return <Card isShown={true} id={val.id} image={`${process.env.REACT_APP_HOST}/${val.photos}`} name={val.Vehicle_Name} city={val.lokasi} />;
-              })}
+            <div className="popular-container">
+              <h1>Popular in Town</h1>
+              <div className="popular">
+                <Popular />
+              </div>
             </div>
-          </div>
-        ) : null}
+            {this.state.car.length > 0 ? (
+              <div class="car">
+                <h1>Cars</h1>
+                <h1
+                  className="viewall"
+                  onClick={() => {
+                    this.props.history.push("/vehicle/car?page=1&limit=8&order=DESC&sorting=id");
+                  }}
+                >
+                  View All
+                </h1>
+                <div class="cards-containers">
+                  {this.state.car.map((val) => {
+                    return <Card isShown={true} id={val.id} image={`${process.env.REACT_APP_HOST}/${val.photos}`} name={val.Vehicle_Name} city={val.lokasi} />;
+                  })}
+                </div>
+              </div>
+            ) : null}
 
-        {this.state.motor.length > 0 ? (
-          <div class="motor">
-            <h1>Motorbike</h1>
-            <h1
-              className="viewall"
-              onClick={() => {
-                this.props.history.push("/vehicle/motorbike?page=1&limit=8&order=DESC&sorting=id");
-              }}
-            >
-              View All
-            </h1>
-            <div class="cards-containers">
-              {this.state.motor.map((val) => {
-                return <Card isShown={true} id={val.id} image={`${process.env.REACT_APP_HOST}/${val.photos}`} name={val.Vehicle_Name} city={val.lokasi} />;
-              })}
-            </div>
-          </div>
-        ) : null}
+            {this.state.motor.length > 0 ? (
+              <div class="motor">
+                <h1>Motorbike</h1>
+                <h1
+                  className="viewall"
+                  onClick={() => {
+                    this.props.history.push("/vehicle/motorbike?page=1&limit=8&order=DESC&sorting=id");
+                  }}
+                >
+                  View All
+                </h1>
+                <div class="cards-containers">
+                  {this.state.motor.map((val) => {
+                    return <Card isShown={true} id={val.id} image={`${process.env.REACT_APP_HOST}/${val.photos}`} name={val.Vehicle_Name} city={val.lokasi} />;
+                  })}
+                </div>
+              </div>
+            ) : null}
 
-        {this.state.bike.length > 0 ? (
-          <div class="bike">
-            <h1>Bike</h1>
-            <h1
-              className="viewall"
-              onClick={() => {
-                this.props.history.push("/vehicle/bike?page=1&limit=8&order=DESC&sorting=id");
-              }}
-            >
-              View All
-            </h1>
-            <div class="cards-containers">
-              {this.state.bike.map((val) => {
-                return <Card isShown={true} id={val.id} image={`${process.env.REACT_APP_HOST}/${val.photos}`} name={val.Vehicle_Name} city={val.lokasi} />;
-              })}
-            </div>
-          </div>
-        ) : null}
+            {this.state.bike.length > 0 ? (
+              <div class="bike">
+                <h1>Bike</h1>
+                <h1
+                  className="viewall"
+                  onClick={() => {
+                    this.props.history.push("/vehicle/bike?page=1&limit=8&order=DESC&sorting=id");
+                  }}
+                >
+                  View All
+                </h1>
+                <div class="cards-containers">
+                  {this.state.bike.map((val) => {
+                    return <Card isShown={true} id={val.id} image={`${process.env.REACT_APP_HOST}/${val.photos}`} name={val.Vehicle_Name} city={val.lokasi} />;
+                  })}
+                </div>
+              </div>
+            ) : null}
 
-        <div id="snackbar">Vehicle Not Found</div>
-        <Footer />
-      </main>
+            <div id="snackbar">Vehicle Not Found</div>
+            <Footer />
+          </main>
+        )}
+      </>
     );
   }
 }

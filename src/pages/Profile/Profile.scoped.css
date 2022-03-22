@@ -347,3 +347,23 @@ h2 {
   right: 10%;
   width: 30%;
 }
+
+.check-pass {
+  padding-left: 5%;
+  color: red;
+  padding-top: 2%;
+  padding-bottom: 3%;
+}
+
+.footer {
+  height: 10vh;
+}
+
+.footer button {
+  height: 7vh;
+  font-weight: 700;
+}
+
+.footer .right-btn {
+  color: #393939;
+}

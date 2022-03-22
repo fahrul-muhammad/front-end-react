@@ -56,14 +56,14 @@ export default class Router extends Component {
             <Route
               path="/vehicle/detail/:id"
               render={(routerProps) => {
-                if (!accessToken) return <Redirect from="/vehicle_detail" to="/" />;
+                if (!accessToken) return <Redirect from="/vehicle/detail/:id" to="/" />;
                 return <Booking {...routerProps} />;
               }}
             />
             <Route
               path="/vehicle/edit/:id"
               render={(routerProps) => {
-                if (!accessToken) return <Redirect from="/edit_vehicle" to="/" />;
+                if (!accessToken) return <Redirect from="/vehicle/edit/:id" to="/" />;
                 return <EditVehicle {...routerProps} />;
               }}
             />

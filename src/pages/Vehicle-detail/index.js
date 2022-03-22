@@ -45,7 +45,6 @@ class index extends Component {
 
   getVehicle = () => {
     const URL = `${process.env.REACT_APP_HOST}/vehicle/detail/${this.props.match.params.id}`;
-    console.log(URL);
     axios({
       url: URL,
     })
@@ -132,11 +131,9 @@ class index extends Component {
                   <strong>Reservation</strong>
                 </button>
               </a>
-              <a href={`/vehicle/edit/${this.state.vehicle.id}`} className="like">
-                <button type="button" class="btn btn-secondary">
-                  <strong> Edit</strong>
-                </button>
-              </a>
+              <button onClick={this.props.users.id === this.state.vehicle.user_id ? this.props.history.push(`/vehicle/edit/${this.state.vehicle.id}`) : null} type="button" class="btn btn-secondary like">
+                <strong>{this.props.users.id === this.state.vehicle.user_id ? "Edit" : "Like"}</strong>
+              </button>
             </div>
             <Footer />
           </div>
@@ -146,6 +143,11 @@ class index extends Component {
   }
 }
 
+/* 
+
+`/vehicle/edit/${this.state.vehicle.id}`
+*/
+
 const mapDispatchToPropps = (dispacth) => {
   return {
     setPaymentData: bindActionCreators(PaymentData, dispacth),
@@ -154,7 +156,9 @@ const mapDispatchToPropps = (dispacth) => {
 
 const mapStateToProps = (state) => {
   console.log(state);
-  return {};
+  return {
+    users: state.auth.userData,
+  };
 };
 
 export default connect(
