@@ -1,6 +1,11 @@
 .img-container {
   margin: 4% 0% 4% 0%;
   height: 500px;
+  position: relative;
+}
+
+.wrapper {
+  margin-bottom: 5%;
 }
 
 .img-container figcaption {

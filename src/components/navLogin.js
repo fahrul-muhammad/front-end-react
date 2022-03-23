@@ -11,6 +11,8 @@ class navLogin extends Component {
     super(props);
     this.state = {
       users: {},
+      error: false,
+      loaded: false,
     };
   }
 
@@ -31,9 +33,18 @@ class navLogin extends Component {
     window.location.reload();
   };
 
+  onImageLoaded = () => {
+    this.setState({ loaded: true });
+  };
+
+  onImageError = () => {
+    this.setState({ error: true });
+  };
+
   render() {
     console.log(this.props);
     const profilepic = this.props.users.profilepic;
+    let imgSrc = !this.state.error ? process.env.REACT_APP_HOST + profilepic : defaultImg;
     return (
       <nav className="navbar navbar-expand-sm navbar-light bg-light log-nav">
         <div className="container-fluid me-2">
@@ -74,7 +85,7 @@ class navLogin extends Component {
           </a>
           <div className="profile-img">
             <div className="btn-group dropstart ">
-              <img src={profilepic ? process.env.REACT_APP_HOST + profilepic : defaultImg} alt="profilepic" />
+              <img src={imgSrc} onError={() => this.onImageError()} onLoad={() => this.onImageLoaded()} alt="profilepic" />
               <button type="button" className="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" />
               <ul className="dropdown-menu ">
                 <li>

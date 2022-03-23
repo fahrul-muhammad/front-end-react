@@ -1,13 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Card.scoped.css";
+import Default from "../img/default-car.jpg";
 
 function Card(props) {
+  // const [imgDefault, setImgDefault] = useState("");
+  const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
+
+  const onImageLoaded = () => {
+    setLoaded(true);
+  };
+
+  const onImageError = () => {
+    setError(true);
+  };
+
+  let imgSrc = !error ? props.image : Default;
+
   return (
-    <>
+    <div className="wrapper">
       <div class="img-container">
         <div class="img-gallery">
           <a href={`/vehicle/detail/${props.id}`}>
-            <img src={props.image} alt="vehicle" />
+            <img
+              src={imgSrc}
+              onError={() => {
+                onImageError();
+              }}
+              onLoad={() => {
+                onImageLoaded();
+              }}
+              placeholder={Default}
+              alt="vehicle"
+            />
             <figcaption>
               <h4>{props.name}</h4>
               <p>{props.city}</p>
@@ -15,7 +40,7 @@ function Card(props) {
           </a>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

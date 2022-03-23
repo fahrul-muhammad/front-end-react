@@ -1,5 +1,6 @@
 import "./popularVehc.scoped.css";
 import axios from "axios";
+import Default from "../img/default-car.jpg";
 
 import React, { Component } from "react";
 
@@ -8,6 +9,8 @@ export default class popularVehc extends Component {
     super(props);
     this.state = {
       result: [],
+      error: false,
+      loaded: false,
     };
   }
 
@@ -31,7 +34,17 @@ export default class popularVehc extends Component {
   componentDidMount() {
     this.getPopular();
   }
+
+  onImageLoaded = () => {
+    this.setState({ loaded: true });
+  };
+
+  onImageError = () => {
+    this.setState({ error: true });
+  };
+
   render() {
+    // let imgSrc = !this.state.error ?
     return (
       <>
         {this.state.result.map((val) => {
@@ -40,7 +53,16 @@ export default class popularVehc extends Component {
             <div class="img-container">
               <div class="img-gallery">
                 <a href={`/vehicle/detail/${val.vehicle_id}`}>
-                  <img src={`${process.env.REACT_APP_HOST}/${val.photo}`} alt="vehicle" />
+                  <img
+                    onError={() => {
+                      this.onImageError();
+                    }}
+                    onLoad={() => {
+                      this.onImageLoaded();
+                    }}
+                    src={`${process.env.REACT_APP_HOST}/${val.photo}`}
+                    alt="vehicle"
+                  />
                   <figcaption>
                     <h4>{val.name}</h4>
                     <p>{val.location}</p>

@@ -9,6 +9,7 @@ import { Toast } from "react-bootstrap";
 import Header from "../../components/navLogin";
 import Footer from "../../components/footerTemp";
 import Loading from "../../animation/Loading";
+import Default from "../../img/default-car.jpg";
 
 class index extends Component {
   constructor(props) {
@@ -18,6 +19,8 @@ class index extends Component {
       result: [],
       isLoading: false,
       showToast: false,
+      error: false,
+      loaded: false,
     };
   }
 
@@ -47,6 +50,7 @@ class index extends Component {
   componentDidMount() {
     this.getVehicle();
     this.setState({ users: this.props.users });
+    console.log("PAYMENT STATE", this.props.payment);
   }
 
   finishPayment = async () => {
@@ -78,6 +82,14 @@ class index extends Component {
     this.setState({ showToast: false });
   };
 
+  onImageLoaded = () => {
+    this.setState({ loaded: true });
+  };
+
+  onImageError = () => {
+    this.setState({ error: true });
+  };
+
   render() {
     const formatRupiah = (money) => {
       return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", minimumFractionDigits: 0 }).format(money);
@@ -91,6 +103,7 @@ class index extends Component {
       }
       return result;
     }
+    let imgSrc = !this.state.error ? `${process.env.REACT_APP_HOST}/${this.state.result.image}` : Default;
     return (
       <main>
         {this.state.isLoading ? (
@@ -113,7 +126,7 @@ class index extends Component {
               <h3>Payment</h3>
             </div>
             <div className="jumbotron">
-              <img src={`${process.env.REACT_APP_HOST}/${this.state.result.image}`} alt="vehicle" />
+              <img src={imgSrc} onError={() => this.onImageError()} onLoad={() => this.onImageLoaded()} alt="vehicle" />
               <div className="jumbo-tittle">
                 <p>
                   <strong>{this.state.result.name}</strong>
@@ -151,7 +164,7 @@ class index extends Component {
             <div className="detail-order">
               <p>DETAIL ORDER</p>
               <div className="f-left">
-                <p>Quantity : {this.props.payment.counter}</p>
+                <p>Quantity : {this.props.payment.quantity}</p>
               </div>
               <div className="f-right">
                 <p>
@@ -163,7 +176,7 @@ class index extends Component {
                 <p>Price Details : </p>
                 <ul>
                   <li>
-                    {this.props.payment.counter} {this.state.result.category} : {formatRupiah(this.props.payment.price)}
+                    {this.props.payment.counter} {this.state.result.category} : {formatRupiah(this.props.payment.totalPrice)}
                   </li>
                 </ul>
               </div>

@@ -35,6 +35,8 @@ class index extends Component {
       checkPass: false,
       password: "",
       repeatPass: "",
+      error: false,
+      loaded: false,
     };
     this.inputFile = React.createRef();
   }
@@ -192,9 +194,18 @@ class index extends Component {
     this.changePass();
   };
 
+  onImageLoaded = () => {
+    this.setState({ loaded: true });
+  };
+
+  onImageError = () => {
+    this.setState({ error: true });
+  };
+
   render() {
     const profilepic = this.props.users.profilepic;
-    const images = this.props.users.profilepic !== null ? process.env.REACT_APP_HOST + profilepic : defaultImg;
+    // const images = this.props.users.profilepic !== null ? process.env.REACT_APP_HOST + profilepic : defaultImg;
+    let imgSrc = this.props.users.profilepic == null ? defaultImg : !this.state.error ? process.env.REACT_APP_HOST + profilepic : defaultImg;
     return (
       <>
         {this.state.isLoading ? (
@@ -206,7 +217,7 @@ class index extends Component {
               <h3>Profile</h3>
               <div class="card">
                 <div class="profile-pic">
-                  <img src={!this.state.use_src ? images : this.state.image_src} alt="profilepic" />
+                  <img src={!this.state.use_src ? imgSrc : this.state.image_src} onError={() => this.onImageError()} onLoad={() => this.onImageLoaded()} alt="profilepic" />
                   <div class="edit">
                     <input type="file" name="profilepic" hidden onChange={this.fileChange} ref={this.inputFile} />
                     <button className="edit-profile" onClick={this.handleFile} />

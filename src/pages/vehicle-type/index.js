@@ -24,6 +24,9 @@ class index extends Component {
       search: "",
       searchResult: [],
       isShow: false,
+      order: "ASC",
+      sorting: "name",
+      result: [],
     };
   }
 
@@ -67,6 +70,23 @@ class index extends Component {
       });
   };
 
+  getPopular = () => {
+    const URL = `${process.env.REACT_APP_HOST}/history/popular`;
+    axios({
+      url: URL,
+      method: "GET",
+    })
+      .then((res) => {
+        const { result } = res.data;
+        console.log(result);
+        this.setState({ result: result });
+        console.log("STATE RESULT", this.state.result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   formChange = (e) => {
     const data = { ...this.state };
     data[e.target.name] = e.target.value;
@@ -75,15 +95,17 @@ class index extends Component {
 
   search = () => {
     const token = this.props.token;
-    const URL = `${process.env.REACT_APP_HOST}/vehicle/search?name=${this.state.search}`;
+    const URL = `${process.env.REACT_APP_HOST}/vehicle/search?keyword=${this.state.search}&page=${this.state.page}&limit=5&order=${this.state.order}&sorting=${this.state.sorting}`;
+
+    // this.props.history.push(`/vehicle/search?keyword=${this.state.search}&page=${this.state.page}&limit=5&order=${this.state.order}&sorting=${this.state.sorting}`);
     axios({
       url: URL,
       method: "GET",
       headers: { token },
     })
       .then((res) => {
-        const result = res.data.result;
-        console.log(res.data);
+        const result = res.data.result.result.data;
+        console.log("RESULT SEARCH", res.data.result.result.data);
         this.setState({ searchResult: result, isShow: true });
       })
       .catch((err) => {
@@ -127,11 +149,20 @@ class index extends Component {
     this.getCar();
     this.getMotor();
     this.getBike();
+    this.getPopular();
     // this.search();
     if (this.props.token) {
       this.setState({ isLogin: false });
     } else {
       this.setState({ isLogin: true });
+    }
+    console.log("HISTORY PROPS", this.props.history.location);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.page !== this.state.page || prevState.order !== this.state.order || prevState.sorting !== this.state.sorting) {
+      // this.props.history.push(`${this.props.history.location.pathname}/search?keyword=${this.state.search}&page=${this.state.page}&limit=5&order=${this.state.order}&sorting=${this.state.sorting}`);
+      this.search();
     }
   }
 
@@ -165,6 +196,31 @@ class index extends Component {
                   </div>
                 </div>
               </div>
+              <div className="select">
+                <select
+                  class="form-select shadow-none"
+                  aria-label="Default select example"
+                  onChange={(e) => {
+                    this.setState({ sorting: e.target.value });
+                  }}
+                >
+                  <option selected>{this.state.sorting}</option>
+                  <option value="name">Name (default)</option>
+                  <option value="id">Neweset</option>
+                  <option value="price">Price</option>
+                </select>
+                <select
+                  class="form-select shadow-none"
+                  aria-label="Default select example"
+                  onChange={(e) => {
+                    this.setState({ order: e.target.value });
+                  }}
+                >
+                  <option selected>{this.state.order}</option>
+                  <option value="ASC">ASCENDING</option>
+                  <option value="DESC">DESCENDING</option>
+                </select>
+              </div>
               <div className="button-search">
                 <button type="button" class="btn btn-warning" onClick={this.cancel}>
                   Cancel
@@ -178,20 +234,24 @@ class index extends Component {
                 })}
               </div>
             ) : null}
-            {/* <div className="paginasi-container">
-          <button type="button" class="btn btn-warning" onClick={this.prevPage}>
-            Previous
-          </button>
-          <h1>{this.state.page}</h1>
-          <button type="button" class="btn btn-warning" onClick={this.nextPage}>
-            Next
-          </button>
-        </div> */}
+            {this.state.searchResult.length <= 0 ? null : (
+              <div className="paginasi-container">
+                <button type="button" class="btn btn-warning" onClick={this.prevPage}>
+                  Previous
+                </button>
+                <h1>{this.state.page}</h1>
+                <button disabled={this.state.searchResult.length <= 0 ? true : false} type="button" class="btn btn-warning" onClick={this.nextPage}>
+                  Next
+                </button>
+              </div>
+            )}
 
             <div className="popular-container">
               <h1>Popular in Town</h1>
               <div className="popular">
-                <Popular />
+                {this.state.result.map((val) => {
+                  return <Card isShow={true} id={val.vehicle_id} image={`${process.env.REACT_APP_HOST}/${val.photo}`} name={val.name} city={val.location} />;
+                })}
               </div>
             </div>
             {this.state.car.length > 0 ? (

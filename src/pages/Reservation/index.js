@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import Loading from "../../animation/Loading";
 import { bindActionCreators } from "redux";
 import { PaymentData } from "../../redux/actions/payment";
+import Default from "../../img/default-car.jpg";
 
 class index extends Component {
   constructor(props) {
@@ -17,6 +18,9 @@ class index extends Component {
       counter: this.props.payment.counter,
       result: [],
       price: this.props.payment.price,
+      error: false,
+      loaded: false,
+      date: "",
     };
   }
 
@@ -54,6 +58,7 @@ class index extends Component {
     if (number > 1) {
       this.setState({ counter: number - 1 });
       this.setState({ price: price - price });
+
       console.log("PRICE", this.state.price);
     } else {
       return;
@@ -65,10 +70,29 @@ class index extends Component {
     console.log("REDUX", this.props.payment.price);
   }
 
+  onImageLoaded = () => {
+    this.setState({ loaded: true });
+  };
+
+  onImageError = () => {
+    this.setState({ error: true });
+  };
+
+  setPaymentData = () => {
+    const body = {
+      vehicle: this.state.result,
+      date: this.state.date,
+      quantity: this.state.counter,
+      totalPrice: this.state.result.price * this.state.counter,
+    };
+    this.props.setPaymentData(body);
+  };
+
   render() {
     const formatRupiah = (money) => {
       return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", minimumFractionDigits: 0 }).format(money);
     };
+    let imgSrc = !this.state.error ? `${process.env.REACT_APP_HOST}/${this.state.result.image}` : Default;
     return (
       <div>
         {this.state.result.name === undefined ? (
@@ -84,7 +108,7 @@ class index extends Component {
             </div>
             <div className="main-container">
               <div className="left">
-                <img src={`${process.env.REACT_APP_HOST}/${this.state.result.image}`} alt="" />
+                <img src={imgSrc} onError={() => this.onImageError()} onLoad={() => this.onImageLoaded()} alt="" />
               </div>
               <div className="right">
                 <h2>
@@ -109,17 +133,24 @@ class index extends Component {
                     class="form-control"
                     placeholder="23/06/2003"
                     onChange={(e) => {
-                      this.props.setPaymentData({
-                        ...this.props.payment,
-                        date: e.target.value,
-                      });
+                      // this.props.setPaymentData({
+                      //   ...this.props.payment,
+                      //   date: e.target.value,
+                      //   quantity: this.state.counter,
+                      // });
+                      this.setState({ date: e.target.value });
                     }}
                     aria-label="DD/MM/YYYY"
                   />
                 </div>
               </div>
             </div>
-            <div className="reservation-button">
+            <div
+              className="reservation-button"
+              onClick={() => {
+                this.setPaymentData();
+              }}
+            >
               <a href={`/payment/${this.state.result.id}`}>
                 <button type="button" class="btn btn-warning">
                   <p>Pay Now : {formatRupiah(this.props.payment.price)}</p>

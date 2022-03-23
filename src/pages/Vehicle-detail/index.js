@@ -5,6 +5,7 @@ import axios from "axios";
 import Loading from "../../animation/Loading";
 import { connect } from "react-redux";
 import { PaymentData } from "../../redux/actions/payment";
+import Default from "../../img/default-car.jpg";
 
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
@@ -16,6 +17,8 @@ class index extends Component {
       counter: 1,
       vehicle: [],
       price: 0,
+      error: false,
+      loaded: false,
     };
   }
 
@@ -63,11 +66,20 @@ class index extends Component {
     this.getVehicle();
   }
 
+  onImageLoaded = () => {
+    this.setState({ loaded: true });
+  };
+
+  onImageError = () => {
+    this.setState({ error: true });
+  };
+
   render() {
     const formatRupiah = (money) => {
       return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", minimumFractionDigits: 0 }).format(money);
     };
     this.props.setPaymentData(this.state);
+    let imgSrc = !this.state.error ? `${process.env.REACT_APP_HOST}/${this.state.vehicle.image}` : Default;
     return (
       <main>
         {this.state.vehicle.name === undefined ? (
@@ -83,7 +95,7 @@ class index extends Component {
             </div>
             <div class="main-container">
               <div class="left">
-                <img src={`${process.env.REACT_APP_HOST}/${this.state.vehicle.image}`} alt="" />
+                <img src={imgSrc} onError={() => this.onImageError()} onLoad={() => this.onImageLoaded()} alt="" />
               </div>
               <div class="right">
                 <h1>
@@ -105,10 +117,10 @@ class index extends Component {
               <div class="second-container">
                 <i class="bi bi-chevron-left" />
                 <div class="s-right">
-                  <img src={`${process.env.REACT_APP_HOST}/${this.state.vehicle.image}`} alt="" />
+                  <img src={imgSrc} onError={() => this.onImageError()} onLoad={() => this.onImageLoaded()} alt="" />
                 </div>
                 <div class="s-left">
-                  <img src={`${process.env.REACT_APP_HOST}/${this.state.vehicle.image}`} alt="" />
+                  <img src={imgSrc} onError={() => this.onImageError()} onLoad={() => this.onImageLoaded()} alt="" />
                 </div>
                 <i class="bi bi-chevron-right" />
               </div>
