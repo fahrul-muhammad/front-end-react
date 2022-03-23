@@ -8,6 +8,7 @@ import Header from "../../components/navLogin";
 import Footer from "../../components/footerTemp";
 import { deletVehicle } from "../../utils/vehicle/index";
 import Loading from "../../animation/Loading";
+import Default from "../../img/default-car.jpg";
 
 import { Modal, Button } from "react-bootstrap";
 
@@ -30,6 +31,8 @@ class index extends Component {
       isLoading: false,
       isShow: false,
       message: "",
+      error: false,
+      loaded: false,
     };
     this.inputFile = React.createRef();
   }
@@ -196,10 +199,20 @@ class index extends Component {
       return;
     }
   };
+
+  onImageLoaded = () => {
+    this.setState({ loaded: true });
+  };
+
+  onImageError = () => {
+    this.setState({ error: true });
+  };
+
   render() {
     const { image } = this.state.vehicle;
     console.log("USER ID", this.props.users.id);
     console.log("OWNER ID", this.state.vehicle.user_id);
+    let imgSrc = !this.state.error ? `${process.env.REACT_APP_HOST}/${image}` : Default;
     return (
       <>
         {this.state.isLoading ? (
@@ -216,13 +229,13 @@ class index extends Component {
               <div className="left-container">
                 <div className="img-container">
                   <div className="first">
-                    <img src={!this.state.use_src ? `${process.env.REACT_APP_HOST}/${image}` : this.state.image_src} alt="" onClick={this.handleFile} />
+                    <img src={!this.state.use_src ? imgSrc : this.state.image_src} onError={() => this.onImageError()} onLoad={() => this.onImageLoaded()} alt="" onClick={this.handleFile} />
                   </div>
                   <div className="left-img">
-                    <img src={!this.state.use_src ? `${process.env.REACT_APP_HOST}/${image}` : this.state.image_src} alt="" onClick={this.handleFile} />
+                    <img src={!this.state.use_src ? imgSrc : this.state.image_src} onError={() => this.onImageError()} onLoad={() => this.onImageLoaded()} alt="" onClick={this.handleFile} />
                   </div>
                   <div className="right-img">
-                    <img src={!this.state.use_src ? `${process.env.REACT_APP_HOST}/${image}` : this.state.image_src} alt="" onClick={this.handleFile} />
+                    <img src={!this.state.use_src ? imgSrc : this.state.image_src} onError={() => this.onImageError()} onLoad={() => this.onImageLoaded()} alt="" onClick={this.handleFile} />
                   </div>
                 </div>
               </div>

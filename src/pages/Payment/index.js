@@ -59,7 +59,7 @@ class index extends Component {
       const body = {
         vehicle_id: this.props.match.params.id,
         date: this.props.payment.date,
-        prepayment: this.props.payment.price,
+        prepayment: this.props.payment.totalPrice,
         status_id: 2,
         user_id: this.props.users.id,
         rating: 8,

@@ -204,7 +204,6 @@ class index extends Component {
 
   render() {
     const profilepic = this.props.users.profilepic;
-    // const images = this.props.users.profilepic !== null ? process.env.REACT_APP_HOST + profilepic : defaultImg;
     let imgSrc = this.props.users.profilepic == null ? defaultImg : !this.state.error ? process.env.REACT_APP_HOST + profilepic : defaultImg;
     return (
       <>

@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import "./search.scoped.css";
+import Default from "../img/default-car.jpg";
 
-export default function search(props) {
+export default function Search(props) {
+  const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
+
+  const onImageLoaded = () => {
+    setLoaded(true);
+  };
+
+  const onImageError = () => {
+    setError(true);
+  };
+
+  let imgSrc = !error ? `${process.env.REACT_APP_HOST}/${props.image}` : Default;
+
   return (
     <div className="data-container">
       <div className="vehicle-img">
-        <img src={`${process.env.REACT_APP_HOST}/${props.image}`} alt="" />
+        <img
+          src={imgSrc}
+          onError={() => {
+            onImageError();
+          }}
+          onLoad={() => {
+            onImageLoaded();
+          }}
+          alt=""
+        />
       </div>
       <p className="name">{props.name}</p>
       <p className="location">Location : {props.location}</p>
