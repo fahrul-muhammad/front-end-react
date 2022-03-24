@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import HeaderLogin from "../../components/navLogin";
 import Header from "../../components/header";
 import Footer from "../../components/footerTemp";
-import Galleryimg from "../../components/popularVehc";
+// import Galleryimg from "../../components/popularVehc";
+import Card from "../../components/Card";
 import Testimoni from "../../components/testimoni";
 import { connect } from "react-redux";
 import "./home.scoped.css";
+import axios from "axios";
 
 class homeAfter extends Component {
   constructor(props) {
@@ -13,11 +15,13 @@ class homeAfter extends Component {
     this.state = {
       isLogin: true,
       isOwner: false,
+      result: [],
     };
   }
 
   componentDidMount() {
     this.isOwner();
+    this.getPopular();
     console.log(this.props.token);
     if (this.props.token) {
       this.setState({ isLogin: false });
@@ -34,6 +38,23 @@ class homeAfter extends Component {
     } else {
       this.setState({ isOwner: false });
     }
+  };
+
+  getPopular = () => {
+    const URL = `${process.env.REACT_APP_HOST}/history/popular`;
+    axios({
+      url: URL,
+      method: "GET",
+    })
+      .then((res) => {
+        const { result } = res.data;
+        console.log(result);
+        this.setState({ result: result });
+        console.log("STATE RESULT", this.state.result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   render() {
@@ -108,7 +129,10 @@ class homeAfter extends Component {
         <div className="popular-container">
           <h1>Popular in Town</h1>
           <div className="popular">
-            <Galleryimg />
+            {this.state.result.map((val) => {
+              console.log("VALUE MAPPING", val);
+              return <Card image={val.photo} name={val.name} city={val.location} />;
+            })}
           </div>
         </div>
         <div className={this.state.isOwner ? "add-button" : "hide"}>

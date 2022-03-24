@@ -44,7 +44,7 @@ export default class popularVehc extends Component {
   };
 
   render() {
-    // let imgSrc = !this.state.error ?
+    // let imgSrc = !this.state.error ? `${process.env.REACT_APP_HOST}/${val.photo}` : Default;
     return (
       <>
         {this.state.result.map((val) => {
@@ -60,7 +60,7 @@ export default class popularVehc extends Component {
                     onLoad={() => {
                       this.onImageLoaded();
                     }}
-                    src={`${process.env.REACT_APP_HOST}/${val.photo}`}
+                    // src={imgSrc}
                     alt="vehicle"
                   />
                   <figcaption>
