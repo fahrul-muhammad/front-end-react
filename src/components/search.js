@@ -13,6 +13,7 @@ export default function Search(props) {
   const onImageError = () => {
     setError(true);
   };
+  console.log(loaded);
 
   let imgSrc = !error ? `${process.env.REACT_APP_HOST}/${props.image}` : Default;
 

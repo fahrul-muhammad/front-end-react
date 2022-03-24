@@ -8,7 +8,7 @@ import FooterTemp from "../../components/footerTemp";
 import { useLocation, useHistory } from "react-router-dom";
 
 function Index({ match, location }) {
-  const [category, setCategory] = useState(match.params.category);
+  const [category /* setCategory */] = useState(match.params.category);
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState("DESC");
   const [sorting, setSorting] = useState("name");
