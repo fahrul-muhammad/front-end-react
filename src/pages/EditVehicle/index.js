@@ -127,8 +127,17 @@ class index extends Component {
     })
       .then((res) => {
         this.setState({ use_src: !this.state.use_src });
+        this.setState({ message: "Update vehicle success" });
+        this.setState({ isShow: true });
         this.setState({ isLoading: false });
-        window.location.reload();
+        setTimeout(() => {
+          this.setState({ isShow: false });
+          this.props.history.push("/");
+        }, 3000);
+        setTimeout(() => {
+          // this.setState({ isShow: false });
+          this.props.history.push("/");
+        }, 3001);
       })
       .catch((err) => {
         this.setState({ isLoading: false });
