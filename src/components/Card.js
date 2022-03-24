@@ -3,7 +3,6 @@ import "./Card.scoped.css";
 import Default from "../img/default-car.jpg";
 
 function Card(props) {
-  // const [imgDefault, setImgDefault] = useState("");
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
 
