@@ -15,6 +15,7 @@ function Card(props) {
   };
 
   let imgSrc = !error ? props.image : Default;
+  console.log(loaded);
 
   return (
     <div className="wrapper">

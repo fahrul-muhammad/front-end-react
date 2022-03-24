@@ -1,6 +1,6 @@
 import "./popularVehc.scoped.css";
 import axios from "axios";
-import Default from "../img/default-car.jpg";
+// import Default from "../img/default-car.jpg";
 
 import React, { Component } from "react";
 

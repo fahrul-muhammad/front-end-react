@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 // component
 import NavLogin from "../../components/navLogin";
 import Navbar from "../../components/header";
-import Popular from "../../components/popularVehc";
+// import Popular from "../../components/popularVehc";
 import Card from "../../components/Card";
 import Footer from "../../components/footerTemp";
 import Search from "../../components/search";
