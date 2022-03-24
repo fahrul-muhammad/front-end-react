@@ -67,7 +67,7 @@ class index extends Component {
       url: URL,
       method: "POST",
       data: forms,
-      headers: { "content-type": "multipart/form-data" },
+      headers: { "content-type": "multipart/form-data", token: this.props.token },
     })
       .then((res) => {
         this.setState({ result: res.data.result.id });
