@@ -9,6 +9,7 @@
 
 [![React Js](https://img.shields.io/npm/v/react?label=react)](https://www.npmjs.com/package/react)
 [![Axios](https://img.shields.io/npm/v/axios?label=axios)](https://www.npmjs.com/package/axios)
+[![React Router Dom](https://img.shields.io/npm/v/react-router-dom?label=react-router-dom)](https://www.npmjs.com/package/react-router-dom)
 [![Bootstrap](https://img.shields.io/npm/v/bootstrap?label=bootstrap)](https://www.npmjs.com/package/bootstrap)
 [![Redux](https://img.shields.io/npm/v/redux?label=redux)](https://www.npmjs.com/package/redux)
 [![Redux-promise-middleware](https://img.shields.io/npm/v/redux-promise-middleware?label=redux-promise-middleware)](https://www.npmjs.com/package/redux-promise-middleware)
