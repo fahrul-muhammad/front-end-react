@@ -93,4 +93,6 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Related Projects
 
-`VEHICLE RENTAL - Backend` <https://github.com/fahrul-muhammad/Vehicle-Rental-Back-End>
+`Vehicle Rental - Backend` <https://github.com/fahrul-muhammad/Vehicle-Rental-Back-End>
+</br>
+`Vehicle Rental - Mobile` <https://github.com/fahrul-muhammad/Vehicle-rental-mobile>
