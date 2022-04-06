@@ -13,6 +13,7 @@
 [![Bootstrap](https://img.shields.io/npm/v/bootstrap?label=bootstrap)](https://www.npmjs.com/package/bootstrap)
 [![Redux](https://img.shields.io/npm/v/redux?label=redux)](https://www.npmjs.com/package/redux)
 [![Redux-promise-middleware](https://img.shields.io/npm/v/redux-promise-middleware?label=redux-promise-middleware)](https://www.npmjs.com/package/redux-promise-middleware)
+[![Craco-plugin-scoped-css](https://img.shields.io/npm/v/craco-plugin-scoped-css?label=craco-plugin-scoped-css)](https://www.npmjs.com/package/craco-plugin-scoped-css)
 
 <br/>
 
